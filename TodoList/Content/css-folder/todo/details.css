@@ -1,0 +1,81 @@
+﻿body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f5f7fa;
+	margin: 0;
+	padding: 0;
+}
+
+.details-card {
+	max-width: 800px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+	font-size: 2em;
+	color: #333;
+	margin-bottom: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-bottom: 2px solid #3498db;
+	padding-bottom: 10px;
+}
+
+/* Detay Kartı */
+.details-card {
+	padding: 20px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+	.details-card p {
+		font-size: 1.1rem;
+		line-height: 1.6;
+		color: #555;
+		margin: 10px 0;
+	}
+
+	.details-card label {
+		font-weight: bold;
+		color: #333;
+		font-size: 1.2rem;
+	}
+
+	.details-card span {
+		display: block;
+		margin-top: 5px;
+		font-size: 1rem;
+		color: #777;
+	}
+
+.btn {
+	display: inline-block;
+	padding: 12px 20px;
+	font-size: 1rem;
+	color: #fff;
+	background-color: #3498db;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
+
+	.btn:hover {
+		background-color: #2980b9;
+	}
+
+.btn-danger {
+	background-color: #e74c3c;
+}
+
+	.btn-danger:hover {
+		background-color: #c0392b;
+	}

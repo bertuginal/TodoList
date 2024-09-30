@@ -4,155 +4,54 @@
     ViewBag.Title = "- Edit";
 }
 
+<link href="~/Content/css-folder/todo/edit.css" rel="stylesheet" type="text/css" />
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h2>"@Html.DisplayFor(model => model.Title)" TASK EDIT</h2>
-    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <h2>"@Html.DisplayFor(model => model.Title)" TASK EDIT</h2>
+        @Html.HiddenFor(model => model.Id)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.CheckBoxFor(model => model.IsCompleted)
-            @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.IsCompleted)
+                @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndedDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EndedDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.EndedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-secondary" /> |
+                <a href="@Url.Action("Index", "Todo")" class="btn btn-danger">Cancel</a>
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.EndedDate, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.EndedDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-            @Html.ValidationMessageFor(model => model.EndedDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-secondary" /> |
-            <a href="@Url.Action("Index", "Todo")" class="btn btn-danger">Cancel</a>
-        </div>
-    </div>
-</div>
 }
-
-<style>
-    /* Genel Ayarlar */
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f7f6;
-        margin: 0;
-        padding: 0;
-    }
-
-    .form-horizontal {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        font-size: 2em;
-        color: #2c3e50;
-        margin-bottom: 20px;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
-    }
-
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-        .form-group label {
-            font-weight: bold;
-            color: #34495e;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f0f8ff;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            height: 120px;
-        }
-
-        .form-group input[type="submit"],
-        .form-group .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            font-size: 1rem;
-            color: #fff;
-            background-color: #2ecc71;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-
-            .form-group input[type="submit"]:hover,
-            .form-group .btn:hover {
-                background-color: #27ae60;
-            }
-
-    .btn-danger {
-        background-color: #e74c3c;
-    }
-
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-
-    /* Hata Mesajları */
-    .text-danger {
-        color: #e74c3c;
-        font-size: 0.9rem;
-        margin-top: 5px;
-    }
-
-    .validation-summary-errors {
-        background-color: #fce4e4;
-        border: 1px solid #e74c3c;
-        color: #e74c3c;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 4px;
-        font-size: 0.95rem;
-    }
-</style>

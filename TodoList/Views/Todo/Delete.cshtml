@@ -4,6 +4,9 @@
     ViewBag.Title = "- Delete";
 }
 
+<link href="~/Content/css-folder/todo/delete.css" rel="stylesheet" type="text/css" />
+
+
 <div class="delete-card">
 
     <dl class="dl-horizontal">
@@ -46,105 +49,7 @@
         <div class="form-group">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
             <a href="@Url.Action("Index", "Todo")" class="btn btn-secondary">Cancel</a>
-    
+
         </div>
     }
 </div>
-
-<style>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-}
-
-.delete-card {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    font-size: 1.8em;
-    color: #c0392b; /* Tehlike/silme aksiyonu için kırmızı ton */
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 10px;
-}
-
-/* Detay Kartı */
-.details-card {
-    padding: 15px;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    color: #a94442;
-}
-
-.details-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #a94442;
-    margin: 10px 0;
-}
-
-.details-card label {
-    font-weight: bold;
-    color: #a94442;
-    font-size: 1.2rem;
-}
-
-.details-card span {
-    display: block;
-    margin-top: 5px;
-    font-size: 1rem;
-    color: #843534;
-}
-
-/* Uyarı Mesajı */
-.alert {
-    background-color: #f9e6e6;
-    border: 1px solid #e74c3c;
-    color: #c0392b;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-/* Butonlar */
-.btn {
-    display: inline-block;
-    padding: 12px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #e74c3c; /* Silme butonunda kırmızı ton */
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #c0392b;
-}
-
-.btn-secondary {
-    background-color: #3498db; /* İptal için mavi ton */
-}
-
-.btn-secondary:hover {
-    background-color: #2980b9;
-}
-</style>
