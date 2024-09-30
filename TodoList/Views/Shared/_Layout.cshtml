@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanIt @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("PLAN IT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["UserId"] != null)
+                    {
+                        <li>@Html.ActionLink("☶ TODO LIST", "Index", "Todo")</li>
+                        <li>@Html.ActionLink("↪ LOG OUT", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("➤ LOGIN", "Login", "Account")</li>
+                        <li>@Html.ActionLink("⍟ REGISTER", "Register", "Account")</li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - All rights reserved.</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+
+<style>
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* li elemanlarına yatay boşluk ekliyoruz */
+.navbar-right > li {
+    display: inline-block; 
+    margin-right: 15px;
+}
+
+/* Hover efekti */
+.navbar-right a:hover {
+    background-color: #495057; /* Üzerine gelindiğinde arka plan rengi */
+    color: #f8f9fa; /* Üzerine gelindiğinde yazı rengi */
+    border-radius: 4px; /* Hafif yuvarlatılmış köşeler */
+}
+
+/* Aktif link için stil */
+.navbar-right .active a {
+    background-color: #007bff; /* Aktif linkin arka planı */
+    color: white;
+    border-radius: 4px;
+}
+
+</style>

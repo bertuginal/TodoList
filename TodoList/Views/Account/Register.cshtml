@@ -1,0 +1,198 @@
+﻿@model TodoList.Models.User
+
+@{
+    ViewBag.Title = "- Register";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="register-page">
+        <div class="form-horizontal">
+            <h2>SIGN UP</h2>
+            <h4>Please fill out your information completely!</h4>
+            <hr />
+            <h6>* are required areas!</h6>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control username-field" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group-append">
+                    @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                    <button type="button" class="btn btn" id="togglePassword" onclick="togglePasswordVisibility('passwordInput', 'togglePassword')">
+                        🙈
+                    </button>
+                </div>
+                <div class="col-md-10">
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control password-field", @id = "passwordInput" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group-append">
+                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+                    <button type="button" class="btn btn" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPasswordInput', 'toggleConfirmPassword')">
+                        🙈
+                    </button>
+                </div>
+                <div class="col-md-10">
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control confirm-password-field", @id = "confirmPasswordInput" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Register" class="btn btn-success" />
+                </div>
+            </div>
+            <hr />
+            <p class="text-left">Already have an account? @Html.ActionLink("Sign In", "Login")</p>
+        </div>
+    </div>
+}
+
+<!-- JavaScript -->
+<script>
+    function togglePasswordVisibility(inputId, buttonId) {
+        var passwordInput = document.getElementById(inputId);
+        var toggleBtn = document.getElementById(buttonId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleBtn.innerText = "🙉";
+        } else {
+            passwordInput.type = "password";
+            toggleBtn.innerText = "🙈";
+        }
+    }
+</script>
+
+<style>
+    .register-page {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 110vh;
+        margin: 0;
+    }
+
+    h2 {
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h4 {
+        color: #666;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    h6 {
+        color: #888;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .form-horizontal {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label {
+        font-weight: 500;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 100%;
+        font-size: 16px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+    .btn-success {
+        background-color: #5cb85c;
+        color: #fff;
+        padding: 10px 105px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-success:hover {
+            background-color: #4cae4c;
+            color: #fff;
+        }
+
+    p {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: wavy;
+        }
+
+    .col-md-10 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-group-append {
+        display: flex;
+        margin-right: 10px;
+        align-items: center; /* Dikey ortalama */
+    }
+
+        .input-group-append .btn {
+            margin-left: 170px;
+        }
+
+    .text-left {
+        text-align: left;
+    }
+</style>
