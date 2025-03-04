@@ -4,17 +4,26 @@
     ViewBag.Title = "Create Todo";
 }
 
-<link href="~/Content/css-folder/todo/create.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/create-to.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h2>CREATE TASK</h2>
-    <h4>Please fill in the required fields completely and accurately!</h4>
-    <hr />
-    <h6>* are required areas!</h6>
+
+    <div class="top-line">
+        <a href="@Url.Action("Index", "Todo")" class="arrow-link"><span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span></a>
+        <p class="title-text">Add New Thing</p>
+    </div>
+
+    <div class="detail-action">
+        <div class="icon-container">
+            <i class="fa-solid fa-plus"></i>
+        </div>
+    </div>
 
     @if (Session["UserId"] == null)
     {
@@ -25,7 +34,7 @@
 
         @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Title)
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Title" })
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -33,7 +42,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3", placeholder = "Description" })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -50,8 +59,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-success" /> |
-            <a href="@Url.Action("Index", "Todo")" class="btn btn-danger">Cancel</a>
+            <input type="submit" value="ADD YOUR THING" class="btn btn-add" />
         </div>
     </div>
 </div>

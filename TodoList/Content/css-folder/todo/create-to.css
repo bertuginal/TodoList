@@ -1,0 +1,156 @@
+﻿
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #A5B7D1;
+	margin: 0;
+	padding: 0;
+}
+
+.form-horizontal {
+	max-width: 700px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #46539E;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-line {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 100px;
+}
+
+.arrow-link {
+	position: absolute;
+	left: 0;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.arrow-link:hover {
+	transform: translateX(-4px);
+}
+
+.arrow-icon {
+	font-size: 1.3em;
+	font-weight: 500;
+	color: #2EBAEF;
+	margin-left: 20px;
+}
+
+
+.title-text {
+	font-size: 1.1em;
+	font-weight: 500;
+	color: #fff;
+	margin-top: 12px;
+	text-align: center;
+}
+
+
+.detail-action {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	margin-bottom: 25px;
+	margin-top: -25px;
+}
+
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #46539E;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid #5E6AB3;
+}
+
+	.icon-container .fa-plus {
+		color: #fff;
+		font-size: 24px;
+
+	}
+
+/* Form Stilleri */
+.form-horizontal {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	margin-left: 12px;
+}
+
+	.form-group label {
+		font-size: 0.9rem;
+		color: #fff;
+	}
+
+	.form-group .form-control {
+		padding: 10px;
+		font-size: 1rem;
+		border: 3px solid #5E6AB3;
+		border-radius: 4px;
+		width: 100%;
+		box-sizing: border-box;
+		transition: border-color 0.3s ease;
+	}
+
+		.form-group form-control:focus {
+			border-color: #66afe9;
+			outline: none;
+		}
+
+textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.form-group .text-danger {
+	color: #d9534f;
+	font-size: 0.875rem;
+}
+
+/* Buton Stili */
+.btn-add {
+	padding: 12px 100px;
+	font-size: 0.6rem;
+	color: #fff;
+	background-color: #2EBAEF;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+	.btn-add:hover {
+		color: #fff;
+		background-color: #0eace6;
+	}
+
+/* Hata Mesajları */
+.validation-summary-errors {
+	background-color: #f2dede;
+	color: #a94442;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ebccd1;
+	margin-bottom: 15px;
+}
+
+	.validation-summary-errors ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}

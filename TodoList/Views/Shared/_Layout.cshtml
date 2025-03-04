@@ -3,9 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlanIt @ViewBag.Title</title>
+    <title>PLAN IT - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/css-folder/layout/layoutt.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="~/Content/images/logo/roomify-fav.png" />
+
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -26,8 +32,8 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("➤ LOGIN", "Login", "Account")</li>
-                        <li>@Html.ActionLink("⍟ REGISTER", "Register", "Account")</li>
+                        <li><a href="@Url.Action("Register", "Account")"><i class="fa-solid fa-unlock"></i> Sign Up</a></li>
+                        <li><a href="@Url.Action("Login", "Account")"><i class="fa-regular fa-user"></i> Log in</a></li>
                     }
                 </ul>
 
@@ -46,37 +52,4 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-
 </html>
-
-<style>
-
-.navbar-right a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 8px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* li elemanlarına yatay boşluk ekliyoruz */
-.navbar-right > li {
-    display: inline-block; 
-    margin-right: 15px;
-}
-
-/* Hover efekti */
-.navbar-right a:hover {
-    background-color: #495057; /* Üzerine gelindiğinde arka plan rengi */
-    color: #f8f9fa; /* Üzerine gelindiğinde yazı rengi */
-    border-radius: 4px; /* Hafif yuvarlatılmış köşeler */
-}
-
-/* Aktif link için stil */
-.navbar-right .active a {
-    background-color: #007bff; /* Aktif linkin arka planı */
-    color: white;
-    border-radius: 4px;
-}
-
-</style>

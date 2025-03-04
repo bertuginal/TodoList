@@ -174,8 +174,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css-folder\account\login.css" />
     <Content Include="Content\css-folder\account\register.css" />
-    <Content Include="Content\css-folder\home\index.css" />
-    <Content Include="Content\css-folder\todo\create.css" />
+    <Content Include="Content\css-folder\home\index-h.css" />
+    <Content Include="Content\css-folder\layout\layoutt.css" />
+    <Content Include="Content\css-folder\todo\create-to.css" />
     <Content Include="Content\css-folder\todo\delete.css" />
     <Content Include="Content\css-folder\todo\details.css" />
     <Content Include="Content\css-folder\todo\edit.css" />
@@ -222,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\logo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
