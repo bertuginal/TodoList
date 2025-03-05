@@ -4,8 +4,9 @@
     ViewBag.Title = "- Register";
 }
 
-<link href="~/Content/css-folder/account/register.css" rel="stylesheet" type="text/css" />
-
+<link href="~/Content/css-folder/account/register-t.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @using (Html.BeginForm())
 {
@@ -13,15 +14,15 @@
 
     <div class="register-page">
         <div class="form-horizontal">
-            <h2>SIGN UP</h2>
-            <h4>Please fill out your information completely!</h4>
-            <hr />
-            <h6>* are required areas!</h6>
-            <br />
+            <div class="title-text">
+                <p class="lets-text">Let's,</p>
+                <p class="join-text">join us now!</p>
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control username-field" } })
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "How should we call you?" } })
                     @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -35,7 +36,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="input-group">
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control password-field", @id = "passwordInput" } })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control password-field", @id = "passwordInput", placeholder = "••••••••••••••" } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -50,21 +51,28 @@
                 </div>
                 <div class="col-md-10">
                     <div class="input-group">
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control confirm-password-field", @id = "confirmPasswordInput" } })
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control confirm-password-field", @id = "confirmPasswordInput", placeholder = "••••••••••••••" } })
                         @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
-            <br />
+            <p class="sign-in">Already have an account? @Html.ActionLink("Sign In", "Login")</p>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Register" class="btn btn-success" />
+                <div class="col-md-offset-2 col-md-10 btn-container">
+                    <input type="submit" value="Sign up" class="btn btn-signup" />
                 </div>
             </div>
-            <hr />
-            <p class="text-left">Already have an account? @Html.ActionLink("Sign In", "Login")</p>
+
+            <div class="form-group">
+                <div class="social-media-container">
+                    <p class="follow-text">FOLLOW</p>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 }

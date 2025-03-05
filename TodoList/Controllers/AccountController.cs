@@ -59,7 +59,7 @@ namespace TodoApp.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index","Home");
         }
     }
 }

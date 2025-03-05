@@ -14,6 +14,11 @@ namespace TodoApp.Controllers
         // GET: Todo
         public ActionResult Index()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             var userId = (int)Session["UserId"];
             var todos = _context.TodoItems.Where(t => t.UserId == userId).ToList();
             return View(todos);
@@ -29,6 +34,11 @@ namespace TodoApp.Controllers
         // GET: Todo/Create
         public ActionResult Create()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
