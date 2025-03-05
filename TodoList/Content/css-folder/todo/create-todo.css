@@ -98,23 +98,31 @@ body {
 	}
 
 	.form-group .form-control {
-		padding: 10px;
+		padding: 6px 10px;
 		font-size: 1rem;
 		border: 3px solid #5E6AB3;
 		border-radius: 4px;
 		width: 100%;
 		box-sizing: border-box;
 		transition: border-color 0.3s ease;
+		background-color: #46539E;
+		color: #fff;
 	}
 
-		.form-group form-control:focus {
+		.form-group .form-control:focus {
 			border-color: #66afe9;
 			outline: none;
 		}
 
-textarea {
-	resize: vertical;
-	min-height: 100px;
+textarea[name="Description"] {
+	width: 100%;
+	max-width: 100%;
+	min-width: 120%;
+}
+
+.form-control::placeholder {
+	color: #ACB6E5;
+	opacity: 1;
 }
 
 .form-group .text-danger {
@@ -132,6 +140,7 @@ textarea {
 	border-radius: 2px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	margin-bottom: 40px;
 }
 
 	.btn-add:hover {

@@ -172,11 +172,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\css-folder\account\login.css" />
+    <Content Include="Content\css-folder\account\login-t.css" />
     <Content Include="Content\css-folder\account\register.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
     <Content Include="Content\css-folder\layout\layoutt.css" />
-    <Content Include="Content\css-folder\todo\create-to.css" />
+    <Content Include="Content\css-folder\todo\create-todo.css" />
     <Content Include="Content\css-folder\todo\delete.css" />
     <Content Include="Content\css-folder\todo\details.css" />
     <Content Include="Content\css-folder\todo\edit.css" />

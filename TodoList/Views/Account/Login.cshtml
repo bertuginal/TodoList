@@ -1,8 +1,10 @@
 ﻿@{
-    ViewBag.Title = "- Login";
+    ViewBag.Title = "Log in";
 }
 
-<link href="~/Content/css-folder/account/login.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/account/login-t.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 @using (Html.BeginForm())
@@ -11,18 +13,17 @@
 
     <div class="login-page">
         <div class="form-horizontal">
-            <h2>SIGN IN</h2>
-            <h4>Please enter your email and password!</h4>
-            <hr />
-            <h6>* are required areas!</h6>
-            <br />
+            <div class="title-text">
+                <p class="hello-text">Hello,</p>
+                <p class="welcome-text">welcome!</p>
+            </div>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
                 @Html.Label("Username*", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" name="username" class="form-control" />
+                    <input type="text" name="username" class="form-control" placeholder="How should we call you?"/>
                 </div>
             </div>
 
@@ -36,20 +37,37 @@
                 </div>
                 <div class="col-md-10">
                     <div class="input-group">
-                        <input type="password" id="passwordInput" name="password" class="form-control" />
+                        <input type="password" id="passwordInput" name="password" class="form-control" placeholder="••••••••••••••"/>
                     </div>
                 </div>
             </div>
 
-            <br />
-
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Login" class="btn btn-dark" />
+                <div class="login-options row">
+                    <div class="col-md-6 remember-me">
+                        <input type="checkbox" class="remember-me-checkbox"/> Remember me!
+                    </div>
+                    <div class="col-md-6 forget-password">
+                        <a href="#">Forget password?</a>
+                    </div>
                 </div>
             </div>
-            <hr />
-            <p class="text-left">Don't have an account? @Html.ActionLink("Sign Up", "Register")</p>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btn-container">
+                    <input type="submit" value="Login" class="btn btn-login" />
+                    @Html.ActionLink("Sign Up", "Register", null, new { @class = "btn btn-register" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="social-media-container">
+                    <p class="follow-text">FOLLOW</p>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="btn-social"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 }
