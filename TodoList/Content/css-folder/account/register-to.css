@@ -2,30 +2,30 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background: linear-gradient(135deg, #5919BC, #9A49E6, #C768F9, #FF2AFF);
+	background: linear-gradient(135deg, #1E3A8A, #00AEEF, #00D084);
 	height: 100vh;
 	display: block;
 	justify-content: center;
 	align-items: center;
 }
 
-.login-page {
+
+.register-page {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-
-.title-text .hello-text {
-	color: #535FDC;
+.title-text .lets-text {
+	color: #0C9ADF;
 	font-weight: 400;
 	font-size: 45px;
 	text-align: left;
 	margin-bottom: -25px;
 }
 
-.title-text .welcome-text {
-	color: #384DFF;
+.title-text .join-text {
+	color: #1487CE;
 	font-weight: bold;
 	font-size: 45px;
 	text-align: left;
@@ -66,17 +66,39 @@
 		box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 	}
 
+.sign-in {
+	text-align: left;
+	font-size: 10px;
+	font-weight: 500;
+	color: #E5E5E5;
+	letter-spacing: 2px;
+	margin-top: -10px;
+	margin-bottom: 25px;
+}
+
+	.sign-in a {
+		color: #535FDC;
+		font-weight: 500;
+		text-decoration: none;
+		display: inline-block;
+		transition: all 0.3s ease;
+	}
+
+		.sign-in a:hover {
+			color: #0056b3;
+			font-weight: bold;
+			transform: scale(1.1);
+		}
 
 .btn-container {
 	display: flex;
 	justify-content: left;
 	align-items: flex-start;
-	gap: 15px;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 }
 
-.btn-login {
-	background-color: #FF2AFF;
+.btn-signup {
+	background-color: #177CC4;
 	color: #fff;
 	padding: 5px 35px;
 	border: none;
@@ -86,103 +108,21 @@
 	font-size: 12px;
 }
 
-	.btn-login:hover {
-		background-color: #D100D1;
+	.btn-signup:hover {
+		background-color: #05C4A9;
 		color: #fff;
-	}
-
-.btn-register {
-	background-color: #fff;
-	color: #3C4AFF;
-	padding: 4px 30px;
-	border: 2px solid #3C4AFF;
-	border-radius: 2px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	font-size: 10.5px;
-	font-weight: bold;
-}
-
-	.btn-register:hover {
-		background-color: #5A6BFF;
-		color: #fff;
-		border: 2px solid #5A6BFF;
 	}
 
 .input-group-append {
 	display: flex;
 	margin-right: 10px;
-	align-items: center;
+	align-items: center; /* Dikey ortalama */
 }
 
 	.input-group-append .btn {
 		margin-left: 170px;
 	}
 
-.text-left {
-	text-align: left;
-}
-
-.login-options {
-	display: flex;
-	justify-content:center;
-	align-items: center;
-	margin-top: -18px;
-}
-
-.remember-me {
-	font-size: 10px;
-	font-weight: 500;
-	color: #E5E5E5;
-	letter-spacing: 2px;
-	display: flex;
-	align-items: center; /* Checkbox ve yazıyı dikeyde hizalar */
-}
-
-.remember-me-checkbox {
-	width: 12px;
-	height: 12px;
-	margin-right: 4px;
-	border: 2px solid #E5E5E5;
-	border-radius: 2px;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	vertical-align: middle;
-	appearance: none;
-	background-color: #fff;
-	position: relative;
-}
-
-	.remember-me-checkbox:checked {
-		border-color: #c9c9c9;
-	}
-
-		.remember-me-checkbox:checked::before {
-			content: '\2713'; /* Unicode tik işareti */
-			position: absolute;
-			top: -12px;
-			left: -1px;
-			font-size: 17px;
-			font-weight: bold;
-			color: #FF2AFF; /* Tik işareti beyaz yap */
-		}
-
-	.remember-me-checkbox:hover {
-		border-color: #007bff;
-	}
-
-
-.forget-password a {
-	font-size: 10px;
-	font-weight: 500;
-	color: #E5E5E5;
-	letter-spacing: 2px;
-	text-decoration: none;
-}
-
-	.forget-password a:hover {
-		color: #364AFD;
-	}
 
 .social-media-container {
 	display: flex;
@@ -207,6 +147,7 @@
 	color: #959595;
 	transition: transform 0.3s ease;
 }
+
 	.btn-social:hover {
 		transform: scale(1.5);
 	}
@@ -214,4 +155,10 @@
 .form-control::placeholder {
 	color: #BDBDBD;
 	font-size: 10px;
+}
+
+.logo img {
+	width: 80px;
+	height: auto;
+	margin-bottom: 30px;
 }

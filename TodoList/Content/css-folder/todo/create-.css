@@ -1,7 +1,7 @@
 ﻿
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #A5B7D1;
+	background: linear-gradient(135deg, #D8E3F2, #7B8EAA, #D8E3F2);
 	margin: 0;
 	padding: 0;
 }
@@ -92,14 +92,15 @@ body {
 	margin-left: 12px;
 }
 
-	.form-group label {
-		font-size: 0.9rem;
+	.form-group .control-label {
+		font-size: 12px;
 		color: #fff;
+		width: 100%;
 	}
 
 	.form-group .form-control {
 		padding: 6px 10px;
-		font-size: 1rem;
+		font-size: 12px;
 		border: 3px solid #5E6AB3;
 		border-radius: 4px;
 		width: 100%;
