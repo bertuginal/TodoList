@@ -1,51 +1,48 @@
 ﻿@model IEnumerable<TodoList.Models.TodoItem>
 
 @{
-    ViewBag.Title = "- Todo List";
+    ViewBag.Title = "Todo List";
 }
 
-<link href="~/Content/css-folder/todo/index.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/index-t.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<a href="@Url.Action("Create")" class="add-todo-btn"><i class="fa-solid fa-plus"></i></a>
 
-<a href="@Url.Action("Create")" class="add-todo-btn">Add New Todo</a>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.First().IsCompleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().EndedDate)
-        </th>
-    </tr>
-
+<div class="todo-list">
     @foreach (var item in Model)
     {
-        <tr class="displayfor-items">
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCompleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @item.CreatedAt.ToString("dd/MM/yyyy HH:mm")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndedDate)
-            </td>
-            <td>
-                <a href="@Url.Action("Edit", new { id = item.Id })" class="action-btn btn-edit">Edit</a>
-                <a href="@Url.Action("Details", new { id = item.Id })" class="action-btn btn-details">Details</a>
-                <a href="@Url.Action("Delete", new { id = item.Id })" class="action-btn btn-delete">Delete</a>
-            </td>
-        </tr>
+        <div class="todo-item">
+            <div class="todo-header" onclick="toggleDescription(this)">
+                <span class="task-status">@Html.DisplayFor(modelItem => item.IsCompleted)</span>
+                <span class="task-title">@Html.DisplayFor(modelItem => item.Title)</span>
+                <div class="btn-actions">
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="action-btn btn-edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="action-btn btn-delete"><i class="fa-regular fa-trash-can"></i></a>
+                </div>
+            </div>
+            <div class="todo-description" style="display: none;">
+                <div class="task-description">
+                    <strong>Description:</strong> @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                <div class="task-description">
+                    <strong>Created Date:</strong> @item.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                </div>
+                <div class="task-description">
+                    <strong>Task Ended Date:</strong> @item.EndedDate.ToString("dd/MM/yyyy")
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function toggleDescription(element) {
+        var description = element.nextElementSibling;
+        if (description) {
+            description.style.display = description.style.display === "none" ? "block" : "none";
+        }
     }
 
-</table>
+</script>
