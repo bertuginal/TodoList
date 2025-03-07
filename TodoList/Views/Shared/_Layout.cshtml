@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <link href="~/Content/css-folder/layout/layoutt.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css-folder/layout/layout-t.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="~/Content/images/logo/plan-it-logo-fav.png" />
@@ -29,8 +29,24 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["UserId"] != null)
                     {
-                        <li>@Html.ActionLink("☶ TODO LIST", "Index", "Todo")</li>
-                        <li>@Html.ActionLink("↪ LOG OUT", "Logout", "Account")</li>
+                        if (ViewBag.IsUser != null && (bool)ViewBag.IsUser)
+                        {
+                            <li><a href="@Url.Action("Index", "Todo")"><i class="fa-solid fa-list"></i> Task List</a></li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" onclick="toggleDropdown('accountDropdown')"><i class="fa-solid fa-user"></i> @ViewBag.UserName</a>
+                                <ul id="accountDropdown" class="dropdown-menu" style="display: none;">
+                                    <li class="user-container">
+                                        <div class="user-info">
+                                            <p class="user-name">Hello @ViewBag.UserName,</p>
+                                            <p class="user-email">@ViewBag.UserEmail</p>
+                                        </div>
+                                    </li>
+                                    <li class="logout"><a href="@Url.Action("Logout", "Account")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
+                                </ul>
+                            </li>
+                        }
                     }
                     else
                     {
@@ -55,3 +71,32 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Dropdown tıklandığında açılacak
+        document.querySelectorAll('.dropdown-toggle').forEach(function (dropdown) {
+            dropdown.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var menu = this.nextElementSibling;
+                menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // Sayfanın başka bir yerine tıklandığında dropdown kapanacak
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+                menu.style.display = 'none';
+            });
+        });
+
+        // Dropdown menünün içi tıklanırsa kapanmayı engelle
+        document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+            menu.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        });
+    });
+
+</script>

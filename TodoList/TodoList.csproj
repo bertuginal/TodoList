@@ -175,7 +175,7 @@
     <Content Include="Content\css-folder\account\login-tod.css" />
     <Content Include="Content\css-folder\account\register-to.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
-    <Content Include="Content\css-folder\layout\layoutt.css" />
+    <Content Include="Content\css-folder\layout\layout-t.css" />
     <Content Include="Content\css-folder\todo\create-.css" />
     <Content Include="Content\css-folder\todo\delete.css" />
     <Content Include="Content\css-folder\todo\details.css" />

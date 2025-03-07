@@ -9,31 +9,77 @@ namespace TodoApp.Controllers
 {
     public class TodoController : Controller
     {
-        private ApplicationDbContext _context = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Todo
         public ActionResult Index()
         {
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Id;
+
+                }
+            }
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            var userId = (int)Session["UserId"];
-            var todos = _context.TodoItems.Where(t => t.UserId == userId).ToList();
+            var todos = db.TodoItems.Where(t => t.UserId == userId).ToList();
             return View(todos);
         }
 
         // GET: Todo/Details/5
         public ActionResult Details(int id)
         {
-            var todo = _context.TodoItems.Find(id);
+            var todo = db.TodoItems.Find(id);
             return View(todo);
         }
 
         // GET: Todo/Create
         public ActionResult Create()
         {
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Id;
+
+                }
+            }
+
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -57,8 +103,8 @@ namespace TodoApp.Controllers
                 todo.UserId = (int)Session["UserId"];
                 todo.CreatedAt = System.DateTime.Now;
                 todo.IsCompleted = false;
-                _context.TodoItems.Add(todo);
-                _context.SaveChanges();
+                db.TodoItems.Add(todo);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(todo);
@@ -67,7 +113,31 @@ namespace TodoApp.Controllers
         // GET: Todo/Edit/5
         public ActionResult Edit(int id)
         {
-            var todo = _context.TodoItems.Find(id);
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Id;
+
+                }
+            }
+
+            var todo = db.TodoItems.Find(id);
             return View(todo);
         }
 
@@ -83,8 +153,8 @@ namespace TodoApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Entry(todo).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
+                db.Entry(todo).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(todo);
@@ -93,7 +163,31 @@ namespace TodoApp.Controllers
         // GET: Todo/Delete/5
         public ActionResult Delete(int id)
         {
-            var todo = _context.TodoItems.Find(id);
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Id;
+
+                }
+            }
+
+            var todo = db.TodoItems.Find(id);
             return View(todo);
         }
 
@@ -101,9 +195,9 @@ namespace TodoApp.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var todo = _context.TodoItems.Find(id);
-            _context.TodoItems.Remove(todo);
-            _context.SaveChanges();
+            var todo = db.TodoItems.Find(id);
+            db.TodoItems.Remove(todo);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

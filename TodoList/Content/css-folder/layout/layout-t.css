@@ -1,0 +1,105 @@
+﻿
+.navbar {
+    background-color: #476368 !important;
+    padding: 8px 16px;
+    border-bottom: 2px solid #fff;
+}
+
+.navbar-brand {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav li {
+    margin-left: 12px;
+}
+
+    .navbar-nav li a {
+        font-size: 14px;
+        color: #fff !important;
+        text-decoration: none;
+        padding: 12px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 4px;
+    }
+
+        .navbar-nav li a:hover {
+            color: #fff;
+            text-decoration: none;
+            background-color: #6D96AE;
+        }
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+/* Dropdown menu styles */
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #476368;
+    color: #fff;
+    font-weight: 500;
+    min-width: 170px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+    .navbar-nav .dropdown-menu li {
+        padding: 0 8px;
+        font-size: 14px;
+    }
+
+        .navbar-nav .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+    .navbar-nav .dropdown-menu a {
+        color: #545454;
+        text-decoration: none;
+        padding: 6px 10px;
+    }
+
+        .navbar-nav .dropdown-menu a:hover {
+            background-color: #6D96AE;
+            color: #fff;
+        }
+
+/* Show dropdown on hover */
+.navbar-nav li:hover .dropdown-menu {
+    display: block;
+}
+
+.logout {
+    border-top: 1px solid #D9D8D6;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.user-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.user-email {
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.dropdown > a.dropdown-toggle[onclick*="accountDropdown"] > .fa-user {
+    color: #E2B145;
+}
