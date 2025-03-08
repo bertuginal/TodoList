@@ -142,13 +142,13 @@
     <Compile Include="Migrations\202409261213515_confirm-password.Designer.cs">
       <DependentUpon>202409261213515_confirm-password.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202409261344371_TodoList-Edited.cs" />
-    <Compile Include="Migrations\202409261344371_TodoList-Edited.Designer.cs">
-      <DependentUpon>202409261344371_TodoList-Edited.cs</DependentUpon>
+    <Compile Include="Migrations\202503081309136_CreatedDateAddedAgain.cs" />
+    <Compile Include="Migrations\202503081309136_CreatedDateAddedAgain.Designer.cs">
+      <DependentUpon>202503081309136_CreatedDateAddedAgain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202409271139165_EndedDate-Added.cs" />
-    <Compile Include="Migrations\202409271139165_EndedDate-Added.Designer.cs">
-      <DependentUpon>202409271139165_EndedDate-Added.cs</DependentUpon>
+    <Compile Include="Migrations\202503081316524_CompletionTimeAdded.cs" />
+    <Compile Include="Migrations\202503081316524_CompletionTimeAdded.Designer.cs">
+      <DependentUpon>202503081316524_CompletionTimeAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TodoItem.cs" />
@@ -180,7 +180,7 @@
     <Content Include="Content\css-folder\todo\delete.css" />
     <Content Include="Content\css-folder\todo\details.css" />
     <Content Include="Content\css-folder\todo\edit.css" />
-    <Content Include="Content\css-folder\todo\index-t.css" />
+    <Content Include="Content\css-folder\todo\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -259,11 +259,11 @@
     <EmbeddedResource Include="Migrations\202409261213515_confirm-password.resx">
       <DependentUpon>202409261213515_confirm-password.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409261344371_TodoList-Edited.resx">
-      <DependentUpon>202409261344371_TodoList-Edited.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202503081309136_CreatedDateAddedAgain.resx">
+      <DependentUpon>202503081309136_CreatedDateAddedAgain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409271139165_EndedDate-Added.resx">
-      <DependentUpon>202409271139165_EndedDate-Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202503081316524_CompletionTimeAdded.resx">
+      <DependentUpon>202503081316524_CompletionTimeAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

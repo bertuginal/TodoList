@@ -22,15 +22,17 @@ namespace TodoList.Models
         [DisplayName("Task Description*")]
         public string Description { get; set; }
 
-        [DisplayName("Created Date")]
-        public DateTime CreatedAt { get; set; }
-
         [DisplayName("Status")]
         public bool IsCompleted { get; set; }
 
-        [Required(ErrorMessage = "Completion time cannot be empty!")]
+        [DataType(DataType.Date)]
+        [DisplayName("Created Date")]
+        public DateTime CreatedDate { get; set; }
+
+        [DataType(DataType.Date)]
         [DisplayName("Completion Time*")]
-        public DateTime EndedDate { get; set; }
+        public DateTime CompletionTime { get; set; }
+        
         public int UserId { get; set; }
         public virtual User User { get; set; }
 

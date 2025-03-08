@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class EndedDateAdded : DbMigration
+    public partial class CreatedDateAddedAgain : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.TodoItems", "EndedDate", c => c.DateTime(nullable: false));
+            AddColumn("dbo.TodoItems", "CreatedDate", c => c.DateTime(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.TodoItems", "EndedDate");
+            DropColumn("dbo.TodoItems", "CreatedDate");
         }
     }
 }

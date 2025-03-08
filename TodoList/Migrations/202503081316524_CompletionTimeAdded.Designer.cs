@@ -7,13 +7,13 @@ namespace TodoList.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class TodoListEdited : IMigrationMetadata
+    public sealed partial class CompletionTimeAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TodoListEdited));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CompletionTimeAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "202409261344371_TodoList-Edited"; }
+            get { return "202503081316524_CompletionTimeAdded"; }
         }
         
         string IMigrationMetadata.Source

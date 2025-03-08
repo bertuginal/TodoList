@@ -128,4 +128,8 @@
 	font-size: 14px;
 	color: #34495E;
 	margin-top: 5px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	white-space: normal;
+	max-width: 100%;
 }
