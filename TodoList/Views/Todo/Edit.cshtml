@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<link href="~/Content/css-folder/todo/edit-t.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/edit-tod.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -13,53 +13,65 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.HiddenFor(model => model.Id)
+<div class="form-horizontal">
+    @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.IsCompleted)
-                @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
-            </div>
+    <div class="edit-action">
+        <div class="line"></div>
+        <div class="icon-container">
+            <i class="fas fa-edit"></i>
         </div>
+        <div class="line"></div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                    </div>
+
+    <h2>Edit Task?</h2>
+    <h4>You can edit your task named "@Html.DisplayFor(model => model.Title)"?</h4>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.IsCompleted)
+            @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CompletionTime, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.CompletionTime, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
-                        @Html.ValidationMessageFor(model => model.CompletionTime, "", new { @class = "text-danger" })
-                    </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompletionTime, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CompletionTime, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                    @Html.ValidationMessageFor(model => model.CompletionTime, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="btn-container">
-                <a href="@Url.Action("Index", "Todo")" class="btn btn-cancel"><i class="fa-regular fa-circle-left"></i> Cancel</a>
-                <button type="submit" class="btn btn-save">
-                    Save Task <i class="fa-regular fa-circle-right"></i>
-                </button>
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="btn-container">
+            <a href="@Url.Action("Index", "Todo")" class="btn btn-cancel"><i class="fa-regular fa-circle-left"></i> Cancel</a>
+            <button type="submit" class="btn btn-save">
+                Save Task <i class="fa-regular fa-circle-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
 }

@@ -1,55 +1,75 @@
 ﻿@model TodoList.Models.TodoItem
 
 @{
-    ViewBag.Title = "- Delete";
+    ViewBag.Title = "Delete";
 }
 
-<link href="~/Content/css-folder/todo/delete.css" rel="stylesheet" type="text/css" />
-
+<link href="~/Content/css-folder/todo/delete-t.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <div class="delete-card">
 
-    <dl class="dl-horizontal">
-        <h2>Delete Todo</h2>
-        <h3>Are you sure you want to delete your "@Html.DisplayFor(model => model.Title)" task?</h3>
-        <hr />
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd>
-            @Model.CreatedDate.ToString("dd/MM/yyyy HH:mm")
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CompletionTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CompletionTime)
-        </dd>
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-group">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <a href="@Url.Action("Index", "Todo")" class="btn btn-secondary">Cancel</a>
-
+    <div class="dl-horizontal">
+        <div class="delete-action">
+            <div class="line"></div>
+            <div class="icon-container">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+            <div class="line"></div>
         </div>
-    }
+
+        <h2>Delete Task?</h2>
+        <h4>Are you sure you want to delete your task named "@Html.DisplayFor(model => model.Title)"?</h4>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-item">
+                    <div class="label-box">
+                        <strong>Title:</strong>
+                    </div>
+                    <div class="value-box">
+                        <span>@Html.DisplayFor(model => model.Title)</span>
+                    </div>
+                </div>
+
+                <div class="card-item">
+                    <div class="label-box">
+                        <strong>Description:</strong>
+                    </div>
+                    <div class="value-box">
+                        <span>@Html.DisplayFor(model => model.Description)</span>
+                    </div>
+                </div>
+
+                <div class="card-item">
+                    <div class="label-box">
+                        <strong>Created Date:</strong>
+                    </div>
+                    <div class="value-box">
+                        <span>@Html.DisplayFor(model => model.CreatedDate)</span>
+                    </div>
+                </div>
+
+                <div class="card-item">
+                    <div class="label-box">
+                        <strong>Completion Time:</strong>
+                    </div>
+                    <div class="value-box">
+                        <span>@Html.DisplayFor(model => model.CompletionTime)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-cancel" })
+            </div>
+        }
+    </div>
 </div>

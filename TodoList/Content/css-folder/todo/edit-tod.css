@@ -1,0 +1,170 @@
+﻿body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #1b5e20, #66bb6a, #1b5e20);
+	margin: 0;
+	padding: 0;
+}
+
+.form-horizontal {
+	max-width: 800px;
+	margin: 50px auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-top: 40px;
+	padding-block-end: 20px;
+	background: linear-gradient(135deg, #ffffff, #f1f1f1, #e0e0e0);
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 1.5rem;
+	color: #1E3050;
+	font-weight: bold;
+}
+
+h4 {
+	text-align: center;
+	font-size: 1rem;
+	margin-bottom: 20px;
+	color: #8a8a8a;
+	font-weight: 500;
+}
+
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+	.form-group label {
+		font-weight: bold;
+		color: #5a669e;
+		font-size: 12px;
+		display: block;
+		margin-bottom: 8px;
+		width: 100%;
+		padding-left: 5px;
+	}
+
+	.form-group .form-control {
+		width: 100%;
+		padding: 8px 12px;
+		font-size: 13px;
+		font-weight: 500;
+		border: 1px solid #DFD0F3;
+		color: #5a669e;
+		border-radius: 5px;
+		background-color: #f7f9ff;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease-in-out;
+	}
+
+		.form-group .form-control:focus {
+			border-color: #a3b8ff;
+			color: #1e3050;
+			background-color: #dce4ff;
+			outline: 3px solid #a3b8ff;
+		}
+
+textarea[name="Description"] {
+	width: 100%;
+	max-width: 100%;
+	min-width: 120%;
+}
+
+.btn-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+	gap: 20px;
+}
+
+.btn-save {
+	font-size: 12px;
+	font-weight: 500;
+	background: linear-gradient(135deg, #1b5e20, #66bb6a, #1b5e20);
+	color: white;
+	padding: 5px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.btn-cancel {
+	font-size: 12px;
+	font-weight: 500;
+	background: linear-gradient(135deg, #ffffff, #f1f1f1, #e0e0e0);
+	color: #333;
+	padding: 4px 15px;
+	border: 1px solid #CFCFCF;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.btn-save:hover {
+	background: linear-gradient(135deg, #145a1c, #81c784, #145a1c);
+	color: #fff;
+}
+
+.btn-cancel:hover {
+	background: linear-gradient(135deg, #d32f2f, #e57373, #ff8a80);
+	color: #fff;
+}
+
+/* Hata Mesajları */
+.text-danger {
+	color: #e74c3c;
+	font-size: 12px;
+	font-weight: 600;
+	margin-top: 8px;
+	margin-left: 5px;
+}
+
+.validation-summary-errors {
+	background-color: #fce4e4;
+	border: 1px solid #e74c3c;
+	color: #e74c3c;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	font-size: 0.95rem;
+}
+
+
+.edit-action {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.line {
+	flex-grow: 1;
+	height: 2px;
+	background-color: #438F47;
+}
+
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #438F47;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: relative;
+	z-index: 2;
+	margin: 0 -25px;
+	border: 2px solid #438F47;
+}
+
+	.icon-container .fa-edit {
+		color: #fff;
+		font-size: 20px;
+	}

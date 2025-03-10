@@ -1,0 +1,159 @@
+﻿body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #9b1d28, #ff6b72, #9b1d28);
+	margin: 0;
+	padding: 0;
+}
+
+.delete-card {
+	background: linear-gradient(135deg, #ffffff, #f1f1f1, #e0e0e0);
+	max-width: 800px;
+	margin: 50px auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-top: 40px;
+	padding-block-end: 40px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+	.delete-card h2 {
+		font-size: 1.5rem;
+		color: #1E3050;
+		font-weight: bold;
+	}
+
+	.delete-card h4 {
+		font-size: 1rem;
+		margin-bottom: 20px;
+		color: #8a8a8a;
+		font-weight: 500;
+	}
+
+.card {
+	background-color: #f7f9ff;
+	border-radius: 10px;
+	border: 1px solid #f7f9ff;
+	padding: 15px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-top: 50px;
+}
+
+.card-content {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.card-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+
+	.card-item:last-child {
+		border-bottom: none;
+	}
+
+.label-box {
+	flex: 1;
+	text-align: left;
+	padding-right: 10px;
+}
+
+.value-box {
+	flex: 1;
+	text-align: left;
+}
+
+.label-box strong {
+	font-size: 13px;
+	font-weight: 600;
+	color: #1E3050;
+}
+
+.value-box span {
+	font-size: 15px;
+	font-weight: 500;
+	color: #5a669e;
+}
+
+.alert {
+	background-color: #f9e6e6;
+	border: 1px solid #e74c3c;
+	color: #c0392b;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 1.1rem;
+}
+
+.form-actions {
+	margin-top: 30px;
+}
+
+	.form-actions .btn {
+		padding: 3px 40px;
+		font-size: 1rem;
+		border-radius: 5px;
+		text-decoration: none;
+	}
+
+.btn-danger {
+	background-color: #dc3545;
+	color: #fff;
+	border: none;
+}
+
+	.btn-danger:hover {
+		background-color: #c82333;
+	}
+
+.btn-cancel {
+	color: #333;
+	margin-left: 10px;
+	font-weight: 600;
+}
+
+	.btn-cancel:hover {
+		color: #dc3545;
+	}
+
+
+.delete-action {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.line {
+	flex-grow: 1;
+	height: 2px;
+	background-color: #e63946;
+}
+
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #e63946;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: relative;
+	z-index: 2;
+	margin: 0 -25px;
+	border: 2px solid #e63946;
+}
+
+	.icon-container .fa-trash-can {
+		color: #fff;
+		font-size: 24px;
+	}
