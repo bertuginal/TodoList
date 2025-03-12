@@ -172,6 +172,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css-folder\account\details-t.css" />
     <Content Include="Content\css-folder\account\login-tod.css" />
     <Content Include="Content\css-folder\account\register-to.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
@@ -220,6 +221,7 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\Todo\Delete.cshtml" />
     <Content Include="Views\Todo\Index.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

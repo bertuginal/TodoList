@@ -1,0 +1,158 @@
+﻿body {
+    background: linear-gradient(135deg, #5a6b75, #6f7e88, #85939d);
+}
+
+hr {
+    color: #bdbdbd;
+}
+
+.account-settings {
+    max-width: 900px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    width: 100%;
+}
+
+    .account-settings h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #263238;
+    }
+
+.section h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.account-settings p {
+    color: #E3E8EC;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.btn-update {
+    float: right;
+    padding: 6px 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid #ebebeb;
+    text-decoration: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+    .btn-update:hover {
+        background-color: #E3E8E9;
+        color: #333;
+        border: 2px solid #E3E8E9;
+    }
+
+    .btn-update i {
+        font-size: 16px;
+        font-weight: bold;
+        padding-right: 3px;
+        color: #264A6A;
+        transition: font-size 0.3s ease; /* Yumuşak geçiş ekledik */
+    }
+
+    .btn-update:hover i {
+        font-size: 20px; /* Hover durumunda büyüme */
+    }
+
+.btn-delete {
+    padding: 6px 15px;
+    background-color: #9A1A1F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s, background-color 0.3s;
+    margin-top: 70px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border: 1px solid #9A1A1F;
+    border-radius: 4px;
+}
+
+
+    .btn-delete:hover {
+        background-color: #7C1419;
+        color: #fff;
+    }
+
+    .btn-delete i {
+        padding-right: 5px;
+    }
+
+
+.section label {
+    font-size: 12px;
+    display: block;
+    font-weight: bold;
+    color: #F8E8DD;
+    margin-bottom: 3px;
+    margin-top: 15px;
+}
+
+.form-control-static {
+    width: 100%;
+    padding: 10px;
+    padding-left: 13px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+.section span {
+    color: #E3E8EC;
+    font-size: 15px;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 30px;
+}
+
+.toggle-password {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    margin-left: -35px;
+}
+    .toggle-password i {
+        color: #72818B;
+        transition: color 0.3s ease;
+    }
+
+    .toggle-password i:hover {
+        color: #495057;
+    }
+
+

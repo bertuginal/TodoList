@@ -55,6 +55,39 @@ namespace TodoApp.Controllers
             return View();
         }
 
+
+        // GET: Account/Details/5
+        public ActionResult Details(int id)
+        {
+            var user = _context.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            bool isUser = false;
+
+            if (Session["UserId"] != null)
+            {
+                var userId = (int)Session["UserId"];
+                isUser = _context.Users.Any(a => a.Id == userId);
+            }
+
+            ViewBag.IsUser = isUser;
+
+            if (Session["UserId"] != null)
+            {
+                var sessionId = (int)Session["UserId"];
+                var userId = _context.Users.FirstOrDefault(a => a.Id == sessionId);
+                if (userId != null)
+                {
+                    ViewBag.UserName = userId.Username;
+                    ViewBag.UserEmail = userId.Id;
+
+                }
+            }
+            return View(user);
+        }
+
         // Logout
         public ActionResult Logout()
         {

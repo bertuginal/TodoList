@@ -1,0 +1,78 @@
+﻿@model TodoList.Models.User
+
+@{
+    ViewBag.Title = "Account Settings";
+}
+
+<link href="~/Content/css-folder/account/details-t.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="account-settings">
+    <h2>Account Settings</h2>
+    <p>Real-time information and activities of your property.</p>
+
+    <hr />
+
+    <div class="section">
+        <h2>Profile Username</h2>
+        <span>Manage your username.</span>
+
+        <label>Username</label>
+        <input type="text" value="@Model.Username" readonly class="form-control-static" />
+        <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn-update">
+            <i class="fas fa-edit"></i> Modify username
+        </a>
+
+    </div>
+
+    <hr />
+
+    <div class="section">
+        <h2>Contact email</h2>
+        <span>Manage your accounts email address for the invoices.</span>
+
+        <label>Email Address</label>
+        <input type="email" value="✉️ *****" readonly class="form-control-static" />
+        <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn-update">
+            <i class="fas fa-plus"></i> Add another email
+        </a>
+    </div>
+
+    <hr />
+
+    <div class="section">
+        <h2>Password</h2>
+        <span>Modify your current password.</span>
+        <label>Current Password</label>
+        <div class="password-field">
+            <input type="password" id="currentPassword" value="🔒 @Model.Password" readonly class="form-control-static password-input" placeholder="Current password" />
+            <span id="passwordToggle" onclick="togglePassword('currentPassword')" class="toggle-password"><i class="fa fa-eye" aria-hidden="true"></i></span>
+            <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn-update">
+                <i class="fas fa-exchange"></i> Change password
+            </a>
+        </div>
+    </div>
+
+    <div class="section">
+        <a href="@Url.Action("Delete", "Account", new { id = Model.Id })" class="btn-delete">
+            <i class="fas fa-trash-can"></i> Cancel tasks and delete this account
+        </a>
+    </div>
+</div>
+
+
+<script>
+    function togglePassword(fieldId) {
+        var field = document.getElementById(fieldId);
+        var toggleElement = document.getElementById("passwordToggle");
+
+        if (field.type === "password") {
+            field.type = "text";
+            toggleElement.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+        } else {
+            field.type = "password";
+            toggleElement.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+        }
+    }
+</script>

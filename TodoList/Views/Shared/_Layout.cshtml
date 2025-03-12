@@ -43,6 +43,8 @@
                                             <p class="user-email">@ViewBag.UserEmail</p>
                                         </div>
                                     </li>
+                                    <li class="logout"><a href="@Url.Action("Details", "Account", new { id = Session["UserId"] })"> Account Settings</a>
+                                    </li>
                                     <li class="logout"><a href="@Url.Action("Logout", "Account")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
                                 </ul>
                             </li>
