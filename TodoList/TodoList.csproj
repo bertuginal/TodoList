@@ -150,7 +150,12 @@
     <Compile Include="Migrations\202503081316524_CompletionTimeAdded.Designer.cs">
       <DependentUpon>202503081316524_CompletionTimeAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503141513240_NoteModelAdded.cs" />
+    <Compile Include="Migrations\202503141513240_NoteModelAdded.Designer.cs">
+      <DependentUpon>202503141513240_NoteModelAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,11 +182,12 @@
     <Content Include="Content\css-folder\account\register-to.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
     <Content Include="Content\css-folder\layout\layout-t.css" />
-    <Content Include="Content\css-folder\todo\create-.css" />
-    <Content Include="Content\css-folder\todo\delete-t.css" />
-    <Content Include="Content\css-folder\todo\details.css" />
-    <Content Include="Content\css-folder\todo\edit-tod.css" />
-    <Content Include="Content\css-folder\todo\index-to.css" />
+    <Content Include="Content\css-folder\todo\note\create-.css" />
+    <Content Include="Content\css-folder\todo\note\delete-t.css" />
+    <Content Include="Content\css-folder\todo\note\details.css" />
+    <Content Include="Content\css-folder\todo\note\edit-tod.css" />
+    <Content Include="Content\css-folder\todo\note\index-to.css" />
+    <Content Include="Content\css-folder\todo\task\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -216,12 +222,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Todo\Create.cshtml" />
+    <Content Include="Views\Todo\NoteCreate.cshtml" />
     <Content Include="Views\Todo\Details.cshtml" />
-    <Content Include="Views\Todo\Edit.cshtml" />
-    <Content Include="Views\Todo\Delete.cshtml" />
+    <Content Include="Views\Todo\NoteEdit.cshtml" />
+    <Content Include="Views\Todo\NoteDelete.cshtml" />
     <Content Include="Views\Todo\Index.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Todo\NoteIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503081316524_CompletionTimeAdded.resx">
       <DependentUpon>202503081316524_CompletionTimeAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503141513240_NoteModelAdded.resx">
+      <DependentUpon>202503141513240_NoteModelAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,8 +31,8 @@
                     {
                         if (ViewBag.IsUser != null && (bool)ViewBag.IsUser)
                         {
-                            <li><a href="@Url.Action("Index", "Todo")"><i class="fa-solid fa-list"></i> Task List</a></li>
-
+                            <li><a href="@Url.Action("TaskIndex", "Todo")"><i class="fa-solid fa-list"></i> My Tasks</a></li>
+                            <li><a href="@Url.Action("NoteIndex", "Todo")"><i class="fa-solid fa-file-lines"></i> My Notes</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" onclick="toggleDropdown('accountDropdown')"><i class="fa-solid fa-user"></i> @ViewBag.UserName</a>
@@ -43,8 +43,7 @@
                                             <p class="user-email">@ViewBag.UserEmail</p>
                                         </div>
                                     </li>
-                                    <li class="logout"><a href="@Url.Action("Details", "Account", new { id = Session["UserId"] })"> Account Settings</a>
-                                    </li>
+                                    <li><a href="@Url.Action("Details", "Account", new { id = Session["UserId"] })"> Account Settings</a></li>
                                     <li class="logout"><a href="@Url.Action("Logout", "Account")"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
                                 </ul>
                             </li>

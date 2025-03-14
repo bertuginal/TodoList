@@ -49,7 +49,7 @@ namespace TodoApp.Controllers
             if (user != null)
             {
                 Session["UserId"] = user.Id;
-                return RedirectToAction("Index", "Todo");
+                return RedirectToAction("NoteIndex", "Todo");
             }
             ModelState.AddModelError("", "Invalid username or password!");
             return View();

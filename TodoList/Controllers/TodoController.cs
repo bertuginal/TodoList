@@ -11,8 +11,9 @@ namespace TodoApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // ****************************** Note ******************************
         // GET: Todo
-        public ActionResult Index()
+        public ActionResult NoteIndex()
         {
             if (Session["UserId"] == null)
             {
@@ -43,8 +44,8 @@ namespace TodoApp.Controllers
                 }
             }
 
-            var todos = db.TodoItems.Where(t => t.UserId == userId).ToList();
-            return View(todos);
+            var notes = db.Notes.Where(t => t.UserId == userId).ToList();
+            return View(notes);
         }
 
         // GET: Todo/Details/5
@@ -55,12 +56,12 @@ namespace TodoApp.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var todo = db.TodoItems.Find(id);
-            return View(todo);
+            var note = db.Notes.Find(id);
+            return View(note);
         }
 
-        // GET: Todo/Create
-        public ActionResult Create()
+        // GET: Todo/NoteCreate
+        public ActionResult NoteCreate()
         {
             if (Session["UserId"] == null)
             {
@@ -94,31 +95,30 @@ namespace TodoApp.Controllers
             return View();
         }
 
-        // POST: Todo/Create
+        // POST: Todo/NoteCreate
         [HttpPost]
-        public ActionResult Create(TodoItem todo)
+        public ActionResult NoteCreate(Note note)
         {
             if (Session["UserId"] == null)
             {
                 ModelState.AddModelError("", "You must be logged in to create a todo!");
-                return View(todo);
+                return View(note);
             }
 
             if (ModelState.IsValid)
             {
-                todo.UserId = (int)Session["UserId"];
-                todo.IsCompleted = false;
-                todo.CreatedDate = DateTime.Now;
+                note.UserId = (int)Session["UserId"];
+                note.CreatedDate = DateTime.Now;
 
-                db.TodoItems.Add(todo);
+                db.Notes.Add(note);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("NoteIndex");
             }
-            return View(todo);
+            return View(note);
         }
 
-        // GET: Todo/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Todo/NoteEdit/5
+        public ActionResult NoteEdit(int id)
         {
             if (Session["UserId"] == null)
             {
@@ -149,40 +149,39 @@ namespace TodoApp.Controllers
                 }
             }
 
-            var todo = db.TodoItems.Find(id);
-            return View(todo);
+            var note = db.Notes.Find(id);
+            return View(note);
         }
 
-        // POST: Todo/Edit/5
+        // POST: Todo/NoteEdit/5
         [HttpPost]
-        public ActionResult Edit(TodoItem todo)
+        public ActionResult NoteEdit(Note note)
         {
             if (Session["UserId"] == null)
             {
                 ModelState.AddModelError("", "You must be logged in to edit a todo!");
-                return View(todo);
+                return View(note);
             }
 
             if (ModelState.IsValid)
             {
-                var existingTodo = db.TodoItems.Find(todo.Id);
+                var existingTodo = db.Notes.Find(note.Id);
 
                 if(existingTodo!= null) {
-                    existingTodo.Title = todo.Title;
-                    existingTodo.Description = todo.Description;
-                    existingTodo.IsCompleted = todo.IsCompleted;
+                    existingTodo.Title = note.Title;
+                    existingTodo.Description = note.Description;
                     existingTodo.CreatedDate = existingTodo.CreatedDate;
-                    existingTodo.CompletionTime = todo.CompletionTime;
+                    existingTodo.Reminder = note.Reminder;
 
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("NoteIndex");
                 }
             }
-            return View(todo);
+            return View(note);
         }
 
-        // GET: Todo/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Todo/NoteDelete/5
+        public ActionResult NoteDelete(int id)
         {
             if (Session["UserId"] == null)
             {
@@ -213,18 +212,21 @@ namespace TodoApp.Controllers
                 }
             }
 
-            var todo = db.TodoItems.Find(id);
-            return View(todo);
+            var note = db.Notes.Find(id);
+            return View(note);
         }
 
-        // POST: Todo/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Todo/NoteDelete/5
+        [HttpPost, ActionName("NoteDelete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var todo = db.TodoItems.Find(id);
-            db.TodoItems.Remove(todo);
+            var note = db.Notes.Find(id);
+            db.Notes.Remove(note);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("NoteIndex");
         }
+
+        // ****************************** Task ******************************
+
     }
 }

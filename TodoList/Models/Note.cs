@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
 namespace TodoList.Models
 {
-    public class TodoItem
-    {
+	public class Note
+	{
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Title cannot be empty!")]
@@ -22,17 +22,14 @@ namespace TodoList.Models
         [DisplayName("Note Description*")]
         public string Description { get; set; }
 
-        [DisplayName("Status")]
-        public bool IsCompleted { get; set; }
-
         [DataType(DataType.Date)]
         [DisplayName("Created Date")]
         public DateTime CreatedDate { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayName("Completion Time*")]
-        public DateTime CompletionTime { get; set; }
-        
+        [DisplayName("Reminder")]
+        public DateTime Reminder { get; set; }
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
 

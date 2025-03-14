@@ -13,6 +13,7 @@ namespace TodoList.DAL
 
         public DbSet<User> Users { get; set; }
         public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
     }
 }

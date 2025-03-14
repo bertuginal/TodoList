@@ -1,10 +1,10 @@
-﻿@model TodoList.Models.TodoItem
+﻿@model TodoList.Models.Note
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<link href="~/Content/css-folder/todo/edit-tod.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/note/edit-tod.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -25,17 +25,8 @@
     </div>
 
 
-    <h2>Edit Task?</h2>
-    <h4>You can edit your task named "@Html.DisplayFor(model => model.Title)"?</h4>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.CheckBoxFor(model => model.IsCompleted)
-            @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
+    <h2>Edit Note?</h2>
+    <h4>You can edit your note named "@Html.DisplayFor(model => model.Title)"?</h4>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -48,10 +39,10 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.CompletionTime, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Reminder, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.CompletionTime, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
-                    @Html.ValidationMessageFor(model => model.CompletionTime, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Reminder, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                    @Html.ValidationMessageFor(model => model.Reminder, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
@@ -67,9 +58,9 @@
 
     <div class="form-group">
         <div class="btn-container">
-            <a href="@Url.Action("Index", "Todo")" class="btn btn-cancel"><i class="fa-regular fa-circle-left"></i> Cancel</a>
+            <a href="@Url.Action("NoteIndex", "Todo")" class="btn btn-cancel"><i class="fa-regular fa-circle-left"></i> Cancel</a>
             <button type="submit" class="btn btn-save">
-                Save Task <i class="fa-regular fa-circle-right"></i>
+                Save Note <i class="fa-regular fa-circle-right"></i>
             </button>
         </div>
     </div>

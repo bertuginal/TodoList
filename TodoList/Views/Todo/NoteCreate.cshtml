@@ -1,10 +1,10 @@
-﻿@model TodoList.Models.TodoItem
+﻿@model TodoList.Models.Note
 
 @{
     ViewBag.Title = "Create Todo";
 }
 
-<link href="~/Content/css-folder/todo/create-.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/note/create-.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -15,8 +15,8 @@
 <div class="form-horizontal">
 
     <div class="top-line">
-        <a href="@Url.Action("Index", "Todo")" class="arrow-link"><span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span></a>
-        <p class="title-text">Add New Thing</p>
+        <a href="@Url.Action("NoteIndex", "Todo")" class="arrow-link"><span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span></a>
+        <p class="title-text">Add New Note</p>
     </div>
 
     <div class="detail-action">
@@ -43,10 +43,10 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            @Html.LabelFor(model => model.CompletionTime, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Reminder, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.CompletionTime, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-                @Html.ValidationMessageFor(model => model.CompletionTime, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Reminder, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.Reminder, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="ADD YOUR THING" class="btn btn-add" />
+            <input type="submit" value="ADD YOUR NOTE" class="btn btn-add" />
         </div>
     </div>
 </div>
