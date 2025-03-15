@@ -7,7 +7,7 @@ using System.Web;
 
 namespace TodoList.Models
 {
-    public class TodoItem
+    public class Task
     {
         public int Id { get; set; }
 

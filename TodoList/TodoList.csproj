@@ -154,9 +154,17 @@
     <Compile Include="Migrations\202503141513240_NoteModelAdded.Designer.cs">
       <DependentUpon>202503141513240_NoteModelAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503142314120_TodoItemsModelChangedToTask.cs" />
+    <Compile Include="Migrations\202503142314120_TodoItemsModelChangedToTask.Designer.cs">
+      <DependentUpon>202503142314120_TodoItemsModelChangedToTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503151511244_NoteDescCharactersUpdated.cs" />
+    <Compile Include="Migrations\202503151511244_NoteDescCharactersUpdated.Designer.cs">
+      <DependentUpon>202503151511244_NoteDescCharactersUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Note.cs" />
-    <Compile Include="Models\TodoItem.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,7 +194,7 @@
     <Content Include="Content\css-folder\todo\note\delete-t.css" />
     <Content Include="Content\css-folder\todo\note\details.css" />
     <Content Include="Content\css-folder\todo\note\edit-tod.css" />
-    <Content Include="Content\css-folder\todo\note\index-to.css" />
+    <Content Include="Content\css-folder\todo\note\index.css" />
     <Content Include="Content\css-folder\todo\task\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -226,7 +234,7 @@
     <Content Include="Views\Todo\Details.cshtml" />
     <Content Include="Views\Todo\NoteEdit.cshtml" />
     <Content Include="Views\Todo\NoteDelete.cshtml" />
-    <Content Include="Views\Todo\Index.cshtml" />
+    <Content Include="Views\Todo\TaskIndex.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Todo\NoteIndex.cshtml" />
   </ItemGroup>
@@ -276,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503141513240_NoteModelAdded.resx">
       <DependentUpon>202503141513240_NoteModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503142314120_TodoItemsModelChangedToTask.resx">
+      <DependentUpon>202503142314120_TodoItemsModelChangedToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503151511244_NoteDescCharactersUpdated.resx">
+      <DependentUpon>202503151511244_NoteDescCharactersUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,7 +17,7 @@ namespace TodoList.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Mission description cannot be empty!")]
-        [MaxLength(160, ErrorMessage = "Mission description is 160 characters maximum!")]
+        [MaxLength(1000, ErrorMessage = "Mission description is 1000 characters maximum!")]
         [MinLength(3, ErrorMessage = "Title must be at least 3 characters!")]
         [DisplayName("Note Description*")]
         public string Description { get; set; }

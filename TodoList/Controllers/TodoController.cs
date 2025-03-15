@@ -12,7 +12,7 @@ namespace TodoApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // ****************************** Note ******************************
-        // GET: Todo
+        // GET: Todo/NoteIndex
         public ActionResult NoteIndex()
         {
             if (Session["UserId"] == null)
@@ -227,6 +227,42 @@ namespace TodoApp.Controllers
         }
 
         // ****************************** Task ******************************
+
+        // GET: Todo/TaskIndex
+        public ActionResult TaskIndex()
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Id;
+
+                }
+            }
+
+            var tasks = db.Tasks.Where(t => t.UserId == userId).ToList();
+            return View(tasks);
+        }
 
     }
 }

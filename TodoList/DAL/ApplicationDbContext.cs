@@ -12,7 +12,7 @@ namespace TodoList.DAL
         public ApplicationDbContext() : base("DefaultConnection") { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Task> Tasks { get; set; }
         public DbSet<Note> Notes { get; set; }
 
     }
