@@ -162,6 +162,26 @@
     <Compile Include="Migrations\202503151511244_NoteDescCharactersUpdated.Designer.cs">
       <DependentUpon>202503151511244_NoteDescCharactersUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503171428044_NoteEditedDateAdded.cs" />
+    <Compile Include="Migrations\202503171428044_NoteEditedDateAdded.Designer.cs">
+      <DependentUpon>202503171428044_NoteEditedDateAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503171433533_NoteReminderNotRequired.cs" />
+    <Compile Include="Migrations\202503171433533_NoteReminderNotRequired.Designer.cs">
+      <DependentUpon>202503171433533_NoteReminderNotRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503171451380_UserEmailAdded.cs" />
+    <Compile Include="Migrations\202503171451380_UserEmailAdded.Designer.cs">
+      <DependentUpon>202503171451380_UserEmailAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503171505362_UserModelEditedWithDescAndTitle.cs" />
+    <Compile Include="Migrations\202503171505362_UserModelEditedWithDescAndTitle.Designer.cs">
+      <DependentUpon>202503171505362_UserModelEditedWithDescAndTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503171509281_UserModelEditedWithTitleMaxLength.cs" />
+    <Compile Include="Migrations\202503171509281_UserModelEditedWithTitleMaxLength.Designer.cs">
+      <DependentUpon>202503171509281_UserModelEditedWithTitleMaxLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Task.cs" />
@@ -186,15 +206,15 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css-folder\account\details-t.css" />
-    <Content Include="Content\css-folder\account\login-tod.css" />
-    <Content Include="Content\css-folder\account\register-to.css" />
+    <Content Include="Content\css-folder\account\login.css" />
+    <Content Include="Content\css-folder\account\register.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
-    <Content Include="Content\css-folder\layout\layout-t.css" />
-    <Content Include="Content\css-folder\todo\note\create-.css" />
+    <Content Include="Content\css-folder\layout\layout.css" />
+    <Content Include="Content\css-folder\todo\note\create.css" />
     <Content Include="Content\css-folder\todo\note\delete-t.css" />
     <Content Include="Content\css-folder\todo\note\details.css" />
-    <Content Include="Content\css-folder\todo\note\edit-tod.css" />
-    <Content Include="Content\css-folder\todo\note\index.css" />
+    <Content Include="Content\css-folder\todo\note\edit.css" />
+    <Content Include="Content\css-folder\todo\note\index-.css" />
     <Content Include="Content\css-folder\todo\task\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -290,6 +310,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503151511244_NoteDescCharactersUpdated.resx">
       <DependentUpon>202503151511244_NoteDescCharactersUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503171428044_NoteEditedDateAdded.resx">
+      <DependentUpon>202503171428044_NoteEditedDateAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503171433533_NoteReminderNotRequired.resx">
+      <DependentUpon>202503171433533_NoteReminderNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503171451380_UserEmailAdded.resx">
+      <DependentUpon>202503171451380_UserEmailAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503171505362_UserModelEditedWithDescAndTitle.resx">
+      <DependentUpon>202503171505362_UserModelEditedWithDescAndTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503171509281_UserModelEditedWithTitleMaxLength.resx">
+      <DependentUpon>202503171509281_UserModelEditedWithTitleMaxLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -78,6 +78,10 @@
     display: block;
 }
 
+.menu-item {
+    margin-bottom: 10px;
+}
+
 .logout {
     border-top: 1px solid #D9D8D6;
 }

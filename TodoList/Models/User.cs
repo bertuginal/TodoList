@@ -16,6 +16,11 @@ namespace TodoList.Models
         [DisplayName("Username*")]
         public string Username { get; set; }
 
+        [Required(ErrorMessage = "E-mail cannot be empty!")]
+        [EmailAddress(ErrorMessage = "Invalid e-mail address!")]
+        [DisplayName("E-mail Address*")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Password cannot be empty!")]
         [MinLength(8, ErrorMessage = "Password must be at least 8 characters!")]
         [DataType(DataType.Password)]

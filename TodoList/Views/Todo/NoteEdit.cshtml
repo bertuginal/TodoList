@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<link href="~/Content/css-folder/todo/note/edit-tod.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/note/edit.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -39,11 +39,13 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.Reminder, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Reminder, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
-                    @Html.ValidationMessageFor(model => model.Reminder, "", new { @class = "text-danger" })
+                @Html.Label("Reminder (optional)", new { @class = "control-label col-md-2" })
+                <div class="col-md-10 date-time-container">
+                    <input id="dateInput" class="form-control" type="date" />
+                    <input id="timeInput" class="form-control" type="time" />
+                    @Html.HiddenFor(model => model.Reminder, new { id = "Reminder" })
                 </div>
+                @Html.ValidationMessageFor(model => model.Reminder, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -51,7 +53,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10" })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -66,3 +68,21 @@
     </div>
 </div>
 }
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let dateInput = document.getElementById("dateInput");
+        let timeInput = document.getElementById("timeInput");
+        let hiddenReminder = document.getElementById("Reminder");
+
+        function updateReminder() {
+            if (dateInput.value && timeInput.value) {
+                hiddenReminder.value = dateInput.value + " " + timeInput.value + ":00";
+            }
+        }
+
+        dateInput.addEventListener("change", updateReminder);
+        timeInput.addEventListener("change", updateReminder);
+    });
+</script>

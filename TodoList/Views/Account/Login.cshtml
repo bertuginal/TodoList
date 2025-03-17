@@ -2,7 +2,7 @@
     ViewBag.Title = "Log in";
 }
 
-<link href="~/Content/css-folder/account/login-tod.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/account/login.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -25,7 +25,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
-                @Html.Label("Username*", new { @class = "control-label col-md-2" })
+                @Html.Label("Username*", new { @class = "control-label " })
                 <div class="col-md-10">
                     <input type="text" name="username" class="form-control" placeholder="e.g., johndoe123" />
                 </div>
@@ -33,18 +33,17 @@
 
 
             <div class="form-group">
-                <div class="input-group-append">
-                    @Html.Label("Password*", new { @class = "control-label col-md-2" })
-                    <button type="button" class="btn btn" id="togglePassword" onclick="togglePasswordVisibility()">
-                        🙈
-                    </button>
-                </div>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <input type="password" id="passwordInput" name="password" class="form-control" placeholder="••••••••••••••" />
+                @Html.Label("Password*", new { @class = "control-label" })
+                <div class="input-group">
+                    <input type="password" id="passwordInput" name="password" class="form-control" placeholder="••••••••••••••" />
+                    <div class="input-group-append">
+                        <button type="button" class="btn" id="togglePassword" onclick="togglePasswordVisibility()">
+                            <i class="fa fa-eye" id="eyeIcon"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+
 
             <div class="form-group">
                 <div class="login-options row">
@@ -73,7 +72,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 }
 
 <!-- JavaScript -->
@@ -81,13 +80,16 @@
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById("passwordInput");
         var toggleBtn = document.getElementById("togglePassword");
+        var eyeIcon = document.getElementById("eyeIcon");
 
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            toggleBtn.innerText = "🙉";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
         } else {
             passwordInput.type = "password";
-            toggleBtn.innerText = "🙈";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
         }
     }
 </script>

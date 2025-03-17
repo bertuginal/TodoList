@@ -25,6 +25,7 @@ namespace TodoApp.Controllers
                 var username = new User
                 {
                     Username = user.Username,
+                    Email = user.Email,
                     Password = user.Password // Şifreyi burada hashleyip saklayabilirsiniz (güvenlik açısından tavsiye edilir)
                 };
 
@@ -81,7 +82,7 @@ namespace TodoApp.Controllers
                 if (userId != null)
                 {
                     ViewBag.UserName = userId.Username;
-                    ViewBag.UserEmail = userId.Id;
+                    ViewBag.UserEmail = userId.Email;
 
                 }
             }

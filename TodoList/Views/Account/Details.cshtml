@@ -33,7 +33,7 @@
         <span>Manage your accounts email address for the invoices.</span>
 
         <label>Email Address</label>
-        <input type="email" value="✉️ *****" readonly class="form-control-static" />
+        <input type="email" value="✉️ @Model.Email" readonly class="form-control-static" />
         <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn-update">
             <i class="fas fa-plus"></i> Add another email
         </a>

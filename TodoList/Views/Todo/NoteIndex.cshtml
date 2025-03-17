@@ -4,7 +4,7 @@
     ViewBag.Title = "Note List";
 }
 
-<link href="~/Content/css-folder/todo/note/index.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/note/index-.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -19,14 +19,24 @@
                     <div class="card-header toggle-header">
                         <div class="header-container">
                             <p class="note-title">@Html.DisplayFor(modelItem => item.Title)</p>
-                            <p class="note-reminder"><i class="fa-regular fa-bell"></i> @Html.DisplayFor(modelItem => item.Reminder)</p>
+                            <p class="note-reminder">
+                                <i class="fa-regular fa-bell"></i>
+                                @if (item.Reminder.HasValue)
+                                {
+                                    @item.Reminder.Value.ToString("dd MMM yyyy HH:mm")
+                                }
+                                else
+                                {
+                                    @:-
+                                }
+                            </p>
 
                         </div>
                         <p class="note-desc">
-                            @item.Description.Substring(0, Math.Min(25, item.Description.Length)) @(item.Description.Length > 25 ? "..." : "")
+                            @item.Description.Substring(0, Math.Min(40, item.Description.Length)) @(item.Description.Length > 40 ? "..." : "")
                         </p>
-                        <p class="note-created-date">@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
-                    </div>
+                            <p class="note-created-date">@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                        </div>
                     <div class="card-body todo-description">
                         <div class="date-container">
                             <p class="note-created-date">@item.CreatedDate.ToString("dd MMMM HH:mm") | @item.Description.Length characters </p>
@@ -36,8 +46,10 @@
                             </div>
                         </div>
                         <p class="note-description">@Html.DisplayFor(modelItem => item.Description)</p>
+
+                        <p class="note-created-date">Edited @item.EditedDate.ToString("dd MMM yyyy, HH:mm")</p>
                     </div>
-                </div>
+                    </div>
             </div>
         }
     </div>
@@ -50,8 +62,14 @@
         headers.forEach(header => {
             header.addEventListener("click", function () {
                 let description = this.parentElement.querySelector(".todo-description");
+
                 if (description) {
-                    description.style.display = description.style.display === "none" || description.style.display === "" ? "block" : "none";
+                    if (description.classList.contains("show")) {
+                        description.classList.remove("show");
+                    } else {
+                        document.querySelectorAll(".todo-description").forEach(desc => desc.classList.remove("show"));
+                        description.classList.add("show");
+                    }
                 }
             });
         });

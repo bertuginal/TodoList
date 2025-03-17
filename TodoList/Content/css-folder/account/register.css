@@ -9,7 +9,6 @@
 	align-items: center;
 }
 
-
 .register-page {
 	display: flex;
 	justify-content: center;
@@ -59,6 +58,7 @@
 	border: 1px solid #ccc;
 	width: 100%;
 	font-size: 12px;
+	margin-top: 5px; /* Add space between label and input */
 }
 
 	.form-control:focus {
@@ -113,16 +113,34 @@
 		color: #fff;
 	}
 
+.input-group {
+	position: relative;
+	width: 100%;
+}
+
 .input-group-append {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	padding-top: 3px;
+	transform: translateY(-50%);
+	z-index: 10;
 	display: flex;
-	margin-right: 10px;
-	align-items: center; /* Dikey ortalama */
+	align-items: center;
 }
 
 	.input-group-append .btn {
-		margin-left: 170px;
+		background: transparent;
+		border: none;
+		padding: 0;
+		cursor: pointer;
 	}
 
+.input-group .fa-eye,
+.input-group .fa-eye-slash {
+	font-size: 14px;
+	color: #888;
+}
 
 .social-media-container {
 	display: flex;

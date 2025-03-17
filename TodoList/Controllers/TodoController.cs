@@ -39,7 +39,7 @@ namespace TodoApp.Controllers
                 if (user != null)
                 {
                     ViewBag.UserName = user.Username;
-                    ViewBag.UserEmail = user.Id;
+                    ViewBag.UserEmail = user.Email;
 
                 }
             }
@@ -87,7 +87,7 @@ namespace TodoApp.Controllers
                 if (user != null)
                 {
                     ViewBag.UserName = user.Username;
-                    ViewBag.UserEmail = user.Id;
+                    ViewBag.UserEmail = user.Email;
 
                 }
             }
@@ -109,6 +109,7 @@ namespace TodoApp.Controllers
             {
                 note.UserId = (int)Session["UserId"];
                 note.CreatedDate = DateTime.Now;
+                note.EditedDate = DateTime.Now;
 
                 db.Notes.Add(note);
                 db.SaveChanges();
@@ -144,7 +145,7 @@ namespace TodoApp.Controllers
                 if (user != null)
                 {
                     ViewBag.UserName = user.Username;
-                    ViewBag.UserEmail = user.Id;
+                    ViewBag.UserEmail = user.Email;
 
                 }
             }
@@ -171,6 +172,7 @@ namespace TodoApp.Controllers
                     existingTodo.Title = note.Title;
                     existingTodo.Description = note.Description;
                     existingTodo.CreatedDate = existingTodo.CreatedDate;
+                    existingTodo.EditedDate = DateTime.Now;
                     existingTodo.Reminder = note.Reminder;
 
                     db.SaveChanges();
@@ -207,7 +209,7 @@ namespace TodoApp.Controllers
                 if (user != null)
                 {
                     ViewBag.UserName = user.Username;
-                    ViewBag.UserEmail = user.Id;
+                    ViewBag.UserEmail = user.Email;
 
                 }
             }
@@ -255,7 +257,7 @@ namespace TodoApp.Controllers
                 if (user != null)
                 {
                     ViewBag.UserName = user.Username;
-                    ViewBag.UserEmail = user.Id;
+                    ViewBag.UserEmail = user.Email;
 
                 }
             }

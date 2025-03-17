@@ -1,0 +1,244 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #5919BC, #9A49E6, #C768F9, #FF2AFF);
+    height: 100vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-text .hello-text {
+    color: #535FDC;
+    font-weight: 400;
+    font-size: 45px;
+    text-align: left;
+    margin-bottom: -25px;
+}
+
+.title-text .welcome-text {
+    color: #384DFF;
+    font-weight: bold;
+    font-size: 45px;
+    text-align: left;
+}
+
+.form-horizontal {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.control-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-control {
+    border-radius: 2px;
+    padding: 7px 14px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 12px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.input-group-append {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 150px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.input-group-append .btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 16px;
+    color: #888;
+}
+
+.input-group-append .btn i {
+    font-size: 14px;
+    color: #888;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group .form-control {
+    padding-right: 40px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-login {
+    background-color: #FF2AFF;
+    color: #fff;
+    padding: 5px 35px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+}
+
+.btn-login:hover {
+    background-color: #D100D1;
+    color: #fff;
+}
+
+.btn-register {
+    background-color: #fff;
+    color: #3C4AFF;
+    padding: 4px 30px;
+    border: 2px solid #3C4AFF;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 10.5px;
+    font-weight: bold;
+}
+
+.btn-register:hover {
+    background-color: #5A6BFF;
+    color: #fff;
+    border: 2px solid #5A6BFF;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.login-options {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: -18px;
+}
+
+.remember-me {
+    font-size: 10px;
+    font-weight: 500;
+    color: #E5E5E5;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center; /* Checkbox ve yazıyı dikeyde hizalar */
+}
+
+.remember-me-checkbox {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    border: 2px solid #E5E5E5;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    appearance: none;
+    background-color: #fff;
+    position: relative;
+}
+
+.remember-me-checkbox:checked {
+    border-color: #c9c9c9;
+}
+
+.remember-me-checkbox:checked::before {
+    content: '\2713'; /* Unicode tik işareti */
+    position: absolute;
+    top: -12px;
+    left: -1px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #FF2AFF; /* Tik işareti beyaz yap */
+}
+
+.remember-me-checkbox:hover {
+    border-color: #007bff;
+}
+
+.forget-password a {
+    font-size: 10px;
+    font-weight: 500;
+    color: #E5E5E5;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.forget-password a:hover {
+    color: #364AFD;
+}
+
+.social-media-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: -20px;
+}
+
+.follow-text {
+    font-size: 9px;
+    font-weight: 700;
+    color: #959595;
+    letter-spacing: 2px;
+    margin: 0;
+    align-self: center;
+}
+
+.btn-social {
+    font-size: 14px;
+    font-weight: 700;
+    color: #959595;
+    transition: transform 0.3s ease;
+}
+
+.btn-social:hover {
+    transform: scale(1.5);
+}
+
+.form-control::placeholder {
+    color: #BDBDBD;
+    font-size: 10px;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 30px;
+}
