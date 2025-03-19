@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
@@ -182,7 +183,12 @@
     <Compile Include="Migrations\202503171509281_UserModelEditedWithTitleMaxLength.Designer.cs">
       <DependentUpon>202503171509281_UserModelEditedWithTitleMaxLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503191223589_AddCategoryToNotes.cs" />
+    <Compile Include="Migrations\202503191223589_AddCategoryToNotes.Designer.cs">
+      <DependentUpon>202503191223589_AddCategoryToNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
@@ -214,7 +220,7 @@
     <Content Include="Content\css-folder\todo\note\delete-t.css" />
     <Content Include="Content\css-folder\todo\note\details.css" />
     <Content Include="Content\css-folder\todo\note\edit.css" />
-    <Content Include="Content\css-folder\todo\note\index-.css" />
+    <Content Include="Content\css-folder\todo\note\index-not.css" />
     <Content Include="Content\css-folder\todo\task\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -261,6 +267,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\logo\" />
+    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -325,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503171509281_UserModelEditedWithTitleMaxLength.resx">
       <DependentUpon>202503171509281_UserModelEditedWithTitleMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503191223589_AddCategoryToNotes.resx">
+      <DependentUpon>202503191223589_AddCategoryToNotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

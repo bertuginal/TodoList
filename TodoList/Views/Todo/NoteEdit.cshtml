@@ -85,4 +85,10 @@
         dateInput.addEventListener("change", updateReminder);
         timeInput.addEventListener("change", updateReminder);
     });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let today = new Date().toISOString().split('T')[0]; // Bugünün tarihini YYYY-MM-DD formatında al
+        document.getElementById("dateInput").setAttribute("min", today); // min özelliğini bugüne ayarla
+    });
 </script>

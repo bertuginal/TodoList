@@ -12,28 +12,33 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <div class="top-line">
-            <a href="@Url.Action("NoteIndex", "Todo")" class="arrow-link"><span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span></a>
-            <p class="title-text">Add New Note</p>
+    <div class="top-line">
+        <a href="@Url.Action("NoteIndex", "Todo")" class="arrow-link"><span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span></a>
+        <p class="title-text">Add New Note</p>
+    </div>
+
+    <div class="detail-action">
+        <div class="icon-container">
+            <i class="fa-solid fa-plus"></i>
         </div>
+    </div>
 
-        <div class="detail-action">
-            <div class="icon-container">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-        </div>
+    @if (Session["UserId"] == null)
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    }
 
-        @if (Session["UserId"] == null)
-        {
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        }
+    <div class="form-group">
+        <label for="CategoryId">Kategori Seç</label>
+        @Html.DropDownList("CategoryId", ViewBag.Categories as SelectList, "Kategori Seç", new { @class = "form-control" })
+    </div>
+
 
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-
                 @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Add a title for your note..." })
@@ -52,25 +57,23 @@
                 @Html.ValidationMessageFor(model => model.Reminder, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
     </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", placeholder = "Write a brief description..." })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="ADD YOUR NOTE" class="btn btn-add" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", placeholder = "Write a brief description..." })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ADD YOUR NOTE" class="btn btn-add" />
+        </div>
+    </div>
+</div>
 }
 
 
@@ -88,6 +91,12 @@
 
         dateInput.addEventListener("change", updateReminder);
         timeInput.addEventListener("change", updateReminder);
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let today = new Date().toISOString().split('T')[0]; // Bugünün tarihini YYYY-MM-DD formatında al
+        document.getElementById("dateInput").setAttribute("min", today); // min özelliğini bugüne ayarla
     });
 </script>
 

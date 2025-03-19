@@ -2,76 +2,234 @@
 
 @{
     ViewBag.Title = "Note List";
+
+    var today = DateTime.Now;
+    var tomorrow = today.AddDays(1);
+
+    // Yaklaşan hatırlatıcıları filtrele
+    var upcomingReminders = Model.Where(n => n.Reminder.HasValue && n.Reminder.Value >= today && n.Reminder.Value < tomorrow)
+                                 .OrderBy(n => n.Reminder.Value)
+                                 .ToList();
+
+    // Diğer notları al
+    var otherNotes = Model.Except(upcomingReminders).ToList();
+
+    // Kategorilere göre grupla
+    var groupedNotes = otherNotes
+    .GroupBy(n => n.Category?.Name)
+    .OrderBy(group => group.Key)  // Kategorilere göre sıralama
+    .ToList();
 }
 
-<link href="~/Content/css-folder/todo/note/index-.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/todo/note/index-not.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <a href="@Url.Action("NoteCreate")" class="add-todo-btn"><i class="fa-solid fa-plus"></i></a>
 
 <div class="container mt-4">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <div class="card-header toggle-header">
-                        <div class="header-container">
-                            <p class="note-title">@Html.DisplayFor(modelItem => item.Title)</p>
-                            <p class="note-reminder">
-                                <i class="fa-regular fa-bell"></i>
-                                @if (item.Reminder.HasValue)
-                                {
-                                    @item.Reminder.Value.ToString("dd MMM yyyy HH:mm")
-                                }
-                                else
-                                {
-                                    @:-
-                                }
-                            </p>
+    @if (upcomingReminders.Any())
+    {
+        <div class="reminder-section">
+            <p class="reminder-upcoming"><i class="fa-regular fa-bell"></i> Notes Upcoming</p>
+            <div class="row">
+                @foreach (var item in upcomingReminders)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card reminder-card">
+                            <div class="card-header toggle-header">
+                                <div class="header-container">
+                                    <p class="note-category">
+                                        <i class="fa-solid fa-tag"></i>
+                                        @(item.Category != null ? item.Category.Name : "Uncategorized")
+                                    </p>
+                                    <p class="note-reminder">
+                                        <i class="fa-regular fa-bell"></i>
+                                        @item.Reminder.Value.ToString("dd MMM, HH:mm")
+                                    </p>
+                                </div>
 
-                        </div>
-                        <p class="note-desc">
-                            @item.Description.Substring(0, Math.Min(40, item.Description.Length)) @(item.Description.Length > 40 ? "..." : "")
-                        </p>
-                            <p class="note-created-date">@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
-                        </div>
-                    <div class="card-body todo-description">
-                        <div class="date-container">
-                            <p class="note-created-date">@item.CreatedDate.ToString("dd MMMM HH:mm") | @item.Description.Length characters </p>
-                            <div class="btn-actions">
-                                <a href="@Url.Action("NoteEdit", new { id = item.Id })" class="action-btn btn-edit"><i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="@Url.Action("NoteDelete", new { id = item.Id })" class="action-btn btn-delete"><i class="fa-regular fa-trash-can"></i></a>
+
+                                <p class="note-title">@Html.DisplayFor(modelItem => item.Title)</p>
+
+                                <p class="note-desc">
+                                    @item.Description.Substring(0, Math.Min(40, item.Description.Length)) @(item.Description.Length > 40 ? "..." : "")
+                                </p>
+                                <p class="note-created-date">@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                            </div>
+                            <div class="card-body todo-description">
+                                <div class="date-container">
+                                    <p class="note-created-date">@item.CreatedDate.ToString("dd MMMM HH:mm") | @item.Description.Length characters </p>
+                                    <div class="btn-actions">
+                                        <a href="@Url.Action("NoteEdit", new { id = item.Id })" class="action-btn btn-edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="@Url.Action("NoteDelete", new { id = item.Id })" class="action-btn btn-delete"><i class="fa-regular fa-trash-can"></i></a>
+                                    </div>
+                                </div>
+                                <p class="note-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                                <p class="note-created-date">Edited @item.EditedDate.ToString("dd MMM yyyy, HH:mm")</p>
                             </div>
                         </div>
-                        <p class="note-description">@Html.DisplayFor(modelItem => item.Description)</p>
-
-                        <p class="note-created-date">Edited @item.EditedDate.ToString("dd MMM yyyy, HH:mm")</p>
                     </div>
-                    </div>
+                }
             </div>
-        }
+        </div>
+    }
+
+    <!-- Filtrelenmiş Notlar -->
+    <!-- Kategori Filtreleme -->
+<div class="category-filter">
+    <!-- All Butonu -->
+    <button class="category-btn" data-category="All">All</button>
+
+    <!-- Dinamik olarak veritabanından alınan kategoriler -->
+    @foreach (var category in ViewBag.Categories)
+    {
+        <button class="category-btn" data-category="@category">@category</button>
+    }
+
+    <!-- Uncategorized Butonu -->
+    <button class="category-btn" data-category="Uncategorized">Uncategorized</button>
+</div>
+    <div class="filtered-notes">
+        <div class="row" id="filtered-notes-container">
+            @foreach (var group in groupedNotes)
+            {
+                <div class="category-section" data-category="@group.Key">
+                    <div class="row">
+                        @foreach (var item in group)
+                        {
+                            <div class="col-md-3 mb-4">
+                                <div class="card">
+                                    <div class="card-header toggle-header">
+                                        <div class="header-container">
+                                            <p class="note-category">
+                                                <i class="fa-solid fa-tag"></i>
+                                                @(item.Category != null ? item.Category.Name : "Uncategorized")
+                                            </p>
+                                            <p class="note-reminder">
+                                                <i class="fa-regular fa-bell"></i>
+                                                @if (item.Reminder.HasValue)
+                                                {
+                                                    @item.Reminder.Value.ToString("dd MMM, HH:mm")
+                                                }
+                                                else
+                                                {
+                                                    <span>-</span>
+                                                }
+                                            </p>
+                                        </div>
+
+                                        <p class="note-title">@Html.DisplayFor(modelItem => item.Title)</p>
+
+                                        <p class="note-desc">
+                                            @item.Description.Substring(0, Math.Min(40, item.Description.Length)) @(item.Description.Length > 40 ? "..." : "")
+                                        </p>
+                                        <p class="note-created-date">@item.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                                    </div>
+                                    <div class="card-body todo-description">
+                                        <div class="date-container">
+                                            <p class="note-created-date">@item.CreatedDate.ToString("dd MMMM HH:mm") | @item.Description.Length characters </p>
+                                            <div class="btn-actions">
+                                                <a href="@Url.Action("NoteEdit", new { id = item.Id })" class="action-btn btn-edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="@Url.Action("NoteDelete", new { id = item.Id })" class="action-btn btn-delete"><i class="fa-regular fa-trash-can"></i></a>
+                                            </div>
+                                        </div>
+                                        <p class="note-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                                        <p class="note-created-date">Edited @item.EditedDate.ToString("dd MMM yyyy, HH:mm")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        let headers = document.querySelectorAll(".toggle-header");
 
-        headers.forEach(header => {
-            header.addEventListener("click", function () {
-                let description = this.parentElement.querySelector(".todo-description");
+ // Overlay elementini oluştur
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay); // Sayfaya ekle
 
-                if (description) {
-                    if (description.classList.contains("show")) {
+    let headers = document.querySelectorAll(".toggle-header");
+
+    headers.forEach(header => {
+        header.addEventListener("click", function () {
+            let description = this.parentElement.querySelector(".todo-description");
+
+            if (description) {
+                if (description.classList.contains("show")) {
+                    // Eğer zaten açıklanmışsa, açıklamayı kapat
+                    description.classList.remove("show");
+                    overlay.style.display = "none"; // Overlay'i gizle
+                } else {
+                    // Diğer açıklamaları gizle
+                    document.querySelectorAll(".todo-description").forEach(desc => desc.classList.remove("show"));
+                    description.classList.add("show");
+
+                    // Overlay'i göster
+                    overlay.style.display = "block";
+
+                    // Overlay'e tıklanınca açıklamayı kapat
+                    overlay.addEventListener('click', function() {
                         description.classList.remove("show");
-                    } else {
-                        document.querySelectorAll(".todo-description").forEach(desc => desc.classList.remove("show"));
-                        description.classList.add("show");
-                    }
+                        overlay.style.display = "none";
+                    });
                 }
-            });
+            }
         });
     });
+
+        let allButton = document.querySelector('.category-btn[data-category="All"]');
+        if (allButton) {
+            allButton.classList.add('selected');  // Sayfa yüklendiğinde All butonu seçili olacak
+        }
+
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const filteredNotesContainer = document.getElementById('filtered-notes-container');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                categoryButtons.forEach(btn => btn.classList.remove('selected'));
+
+                // Tıklanan butona `selected` sınıfını ekle
+                this.classList.add('selected');
+
+                // Kategorilere göre notları filtrele
+                const selectedCategory = this.dataset.category;
+                filterNotes(selectedCategory);
+
+            });
+        });
+
+        function filterNotes(category) {
+            const allSections = filteredNotesContainer.querySelectorAll('.category-section');
+
+            allSections.forEach(section => {
+                const categoryName = section.dataset.category;
+
+                // "All" seçeneği için tüm notları göster
+                if (category === "All") {
+                    section.style.display = "block";
+                }
+                // "Uncategorized" seçeneği için kategorisi olmayan notları göster
+                else if (categoryName === null && category === "Uncategorized") {
+                    section.style.display = "block";
+                }
+                // Diğer kategoriler
+                else if (categoryName === category) {
+                    section.style.display = "block";
+                }
+                else {
+                    section.style.display = "none";
+                }
+            });
+        }
+    });
+
+
 </script>
