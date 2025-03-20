@@ -13,24 +13,51 @@ namespace TodoApp.Controllers
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // ****************************** Note ******************************
+
         // GET: Todo/NoteIndex
         public ActionResult NoteIndex()
         {
+
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
+            bool isUser = false;
             var userId = (int)Session["UserId"];
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Email;
+
+                }
+            }
+
             var notes = db.Notes
                 .Where(t => t.UserId == userId)
                 .Include(n => n.Category)
                 .ToList();
-            var categories = db.Categories.Select(c => c.Name).ToList();
+
+            var categories = notes
+                .Where(n => n.Category != null)
+                .Select(n => n.Category.Name)
+                .Distinct()
+                .ToList();
 
             ViewBag.Categories = categories;
-            ViewBag.UserName = db.Users.Find(userId)?.Username;
-            ViewBag.UserEmail = db.Users.Find(userId)?.Email;
 
             return View(notes);
         }
@@ -48,9 +75,33 @@ namespace TodoApp.Controllers
 
         public ActionResult NoteCreate()
         {
+
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
+            }
+
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Email;
+
+                }
             }
 
             ViewBag.Categories = new SelectList(db.Categories, "Id", "Name");
@@ -86,6 +137,29 @@ namespace TodoApp.Controllers
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
+            }
+
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Email;
+
+                }
             }
 
             var note = db.Notes.Find(id);
@@ -131,6 +205,29 @@ namespace TodoApp.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Email;
+
+                }
+            }
+
             var note = db.Notes.Include(n => n.Category).FirstOrDefault(n => n.Id == id);
             return View(note);
         }
@@ -159,7 +256,6 @@ namespace TodoApp.Controllers
 
             bool isUser = false;
             var userId = (int)Session["UserId"];
-
 
             if (Session["UserId"] != null)
             {

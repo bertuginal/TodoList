@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,16 +11,44 @@ namespace TodoList.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        public CategoryController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        // GET: Category/Index
         public ActionResult Index()
         {
-            var categories = _context.Categories.ToList();
+
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            bool isUser = false;
+            var userId = (int)Session["UserId"];
+
+            if (Session["UserId"] != null)
+            {
+                isUser = db.Users.Any(a => a.Id == userId);
+                if (isUser)
+                {
+                    ViewBag.isUser = isUser;
+                }
+            }
+
+            if (Session["UserId"] != null)
+            {
+                var user = db.Users.FirstOrDefault(a => a.Id == userId);
+                if (user != null)
+                {
+                    ViewBag.UserName = user.Username;
+                    ViewBag.UserEmail = user.Email;
+
+                }
+            }
+
+            var categories = db.Categories
+                .Where(c => c.Notes.Any(n => n.UserId == userId))
+                .ToList();
+
             return View(categories);
         }
 
@@ -33,8 +62,8 @@ namespace TodoList.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Categories.Add(category);
-                _context.SaveChanges();
+                db.Categories.Add(category);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(category);

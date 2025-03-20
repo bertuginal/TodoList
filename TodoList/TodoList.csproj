@@ -187,6 +187,10 @@
     <Compile Include="Migrations\202503191223589_AddCategoryToNotes.Designer.cs">
       <DependentUpon>202503191223589_AddCategoryToNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503202144248_TaskAndNoteAddedToUserModel.cs" />
+    <Compile Include="Migrations\202503202144248_TaskAndNoteAddedToUserModel.Designer.cs">
+      <DependentUpon>202503202144248_TaskAndNoteAddedToUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Note.cs" />
@@ -263,11 +267,11 @@
     <Content Include="Views\Todo\TaskIndex.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Todo\NoteIndex.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\logo\" />
-    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503191223589_AddCategoryToNotes.resx">
       <DependentUpon>202503191223589_AddCategoryToNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503202144248_TaskAndNoteAddedToUserModel.resx">
+      <DependentUpon>202503202144248_TaskAndNoteAddedToUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,6 +33,7 @@ namespace TodoList.Models
         [DisplayName("Confirm Password*")]
         public string ConfirmPassword { get; set; }
 
-        public virtual ICollection<Task> TodoItems { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
     }
 }
