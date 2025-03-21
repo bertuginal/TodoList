@@ -218,6 +218,7 @@
     <Content Include="Content\css-folder\account\details-t.css" />
     <Content Include="Content\css-folder\account\login.css" />
     <Content Include="Content\css-folder\account\register.css" />
+    <Content Include="Content\css-folder\category\index.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
     <Content Include="Content\css-folder\layout\layout.css" />
     <Content Include="Content\css-folder\todo\note\create.css" />
