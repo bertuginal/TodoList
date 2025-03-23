@@ -1,15 +1,16 @@
 ﻿body {
-	background: linear-gradient(135deg, #fafafa, #f5f5f5);
+	background: linear-gradient(135deg, #f7f7f7, #ebebeb);
+	font-family: Arial, sans-serif;
 }
 
 .category-container {
-	padding: 10px;
+	padding: 20px;
 	max-width: 600px;
 	margin: 0 auto;
 }
 
 .category-title {
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: 600;
 	text-align: center;
 	margin-bottom: 20px;
@@ -22,45 +23,49 @@
 	gap: 15px;
 }
 
-.category-item {
-	text-decoration: none;
-	color: inherit;
+form {
+	width: 100%;
 }
 
-.category-link {
-	padding: 10px;
-	padding-left: 40px;
+.category-item {
+	width: 100%;
+	border: none;
+	background: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: 12px 15px;
+	padding-right: 20px;
 	background-color: #fff;
 	border-radius: 8px;
 	border: 1px solid #ddd;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease, background-color 0.3s ease;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	text-align: left;
 }
 
-	.category-link:hover {
-		background-color: #f9f9f9;
-		transform: translateY(-3px);
+	.category-item:hover {
+		background-color: #fff;
+		transform: scale(1.02);
 	}
 
 .category-name {
 	font-size: 15px;
 	font-weight: 500;
 	color: #333;
+	flex-grow: 1;
 }
 
 .note-count {
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 400;
-	color: #999;
-	padding-right: 10px;
+	color: #d6d6d6;
+	padding-left: 10px;
 }
 
 .create-category-item {
 	text-decoration: none;
-	padding: 20px;
+	padding: 15px;
 	background-color: #fff;
 	border-radius: 8px;
 	border: 1px solid #ddd;
@@ -68,13 +73,13 @@
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 	.create-category-item:hover {
-		background-color: #f9f9f9;
-		transform: translateY(-3px);
+		background-color: #fff;
+		transform: scale(1.04);
 	}
 
 .create-category-link {
@@ -90,19 +95,18 @@
 }
 
 	.create-category-link i {
-		font-size: 12px;
+		font-size: 14px;
 		color: #fff;
 		background-color: #FF8F01;
 		border-radius: 50%;
-		padding: 4px;
+		padding: 6px;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-
 	.create-category-link span {
-		font-size: 10px;
+		font-size: 12px;
 		font-weight: 500;
 		color: #333;
 		padding-top: 3px;

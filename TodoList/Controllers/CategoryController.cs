@@ -14,7 +14,7 @@ namespace TodoList.Controllers
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Category/Index
-        public ActionResult Index()
+        public ActionResult Index(int? noteId)
         {
 
             if (Session["UserId"] == null)
@@ -45,12 +45,41 @@ namespace TodoList.Controllers
                 }
             }
 
+            ViewBag.NoteId = noteId;
             var categories = db.Categories
                 .Where(c => c.Notes.Any(n => n.UserId == userId))
                 .ToList();
 
             return View(categories);
         }
+
+        [HttpPost]
+        public ActionResult Index(int noteId, int categoryId)
+        {
+            var note = db.Notes.Find(noteId);
+            if (note != null)
+            {
+                var previousCategoryId = note.CategoryId;
+                note.CategoryId = categoryId;
+                db.SaveChanges();
+
+                var relatedNotes = db.Notes.Where(n => n.CategoryId == previousCategoryId).ToList();
+
+                if (relatedNotes.Count == 0)
+                {
+                    var previousCategory = db.Categories.Find(previousCategoryId);
+                    if (previousCategory != null)
+                    {
+                        db.Categories.Remove(previousCategory);
+                        db.SaveChanges();
+                    }
+                }
+            }
+
+            return RedirectToAction("NoteIndex", "Todo");
+        }
+
+
 
         public ActionResult Create()
         {

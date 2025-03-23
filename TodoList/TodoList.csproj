@@ -218,14 +218,14 @@
     <Content Include="Content\css-folder\account\details-t.css" />
     <Content Include="Content\css-folder\account\login.css" />
     <Content Include="Content\css-folder\account\register.css" />
-    <Content Include="Content\css-folder\category\index.css" />
+    <Content Include="Content\css-folder\category\index-n.css" />
     <Content Include="Content\css-folder\home\index-h.css" />
     <Content Include="Content\css-folder\layout\layout.css" />
     <Content Include="Content\css-folder\todo\note\create.css" />
     <Content Include="Content\css-folder\todo\note\delete-t.css" />
     <Content Include="Content\css-folder\todo\note\details.css" />
     <Content Include="Content\css-folder\todo\note\edit.css" />
-    <Content Include="Content\css-folder\todo\note\index-not.css" />
+    <Content Include="Content\css-folder\todo\note\index-note.css" />
     <Content Include="Content\css-folder\todo\task\index-to.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

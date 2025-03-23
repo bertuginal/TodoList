@@ -4,7 +4,7 @@
     ViewBag.Title = "Category List";
 }
 
-<link href="~/Content/css-folder/category/index.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css-folder/category/index-n.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -13,14 +13,18 @@
     <div class="category-list">
         @foreach (var item in Model)
         {
-            <a href="@Url.Action("CategoryNotes", "Todo", new { categoryId = item.Id })" class="category-item">
-                <div class="category-link">
+            <form method="post" action="@Url.Action("Index", "Category")">
+                <input type="hidden" name="noteId" value="@ViewBag.NoteId" />
+                <input type="hidden" name="categoryId" value="@item.Id" />
+                <button type="submit" class="category-item">
                     <span class="category-name">@item.Name</span>
-                    <span class="note-count">@item.Notes.Count()</span>
-                </div>
-            </a>
-
+                    <span class="note-count">
+                        @item.Notes.Where(n => n.UserId == (int)Session["UserId"]).Count()
+                    </span>
+                </button>
+            </form>
         }
+
 
         <a href="@Url.Action("Create", "Category")" class="create-category-item">
             <div class="create-category-link">
@@ -28,7 +32,5 @@
                 <span>New Category</span>
             </div>
         </a>
-
-
     </div>
 </div>
